@@ -1,0 +1,15 @@
+.levels-container {
+  display: inline-block;
+  border: 1px solid black;
+  width: 8em;
+  height: 8em;
+}
+
+.level-label {
+  font-weight: bold;
+}
+
+.level-value {
+  font-size: 3em;
+  padding-top: 0.3em;
+}

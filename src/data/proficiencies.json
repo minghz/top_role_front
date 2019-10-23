@@ -1,0 +1,26 @@
+{
+  "ath": false,
+
+  "acr": true,
+  "soh": true,
+  "ste": false,
+
+  "arc": false,
+  "his": true,
+  "inv": false,
+  "nat": false,
+  "rel": false,
+
+  "anh": false,
+  "ins": false,
+  "med": false,
+  "per": false,
+  "sur": false,
+
+  "dec": true,
+  "int": true,
+  "prf": true,
+  "prs": false
+}
+
+
