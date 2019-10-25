@@ -1,0 +1,4 @@
+.stats-container {
+  border: 1px solid black;
+  grid-area: stats;
+}

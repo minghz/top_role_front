@@ -1,3 +1,4 @@
 .attributes-container {
+  grid-area: attrs;
   display: inline-block;
 }

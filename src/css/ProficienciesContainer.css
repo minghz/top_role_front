@@ -1,0 +1,4 @@
+.proficiencies-container {
+  grid-area: profs;
+  border: 1px solid black;
+}

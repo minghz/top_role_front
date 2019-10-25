@@ -1,3 +1,4 @@
 .skills-container {
+  grid-area: skills;
   display: inline-block;
 }

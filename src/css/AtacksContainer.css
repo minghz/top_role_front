@@ -1,0 +1,4 @@
+.atacks-container {
+  grid-area: atks;
+  border: 1px solid black;
+}

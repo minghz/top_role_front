@@ -1,8 +1,8 @@
 .levels-container {
+  grid-area: levels;
+  text-align: center;
   display: inline-block;
   border: 1px solid black;
-  width: 8em;
-  height: 8em;
 }
 
 .level-label {
@@ -11,5 +11,4 @@
 
 .level-value {
   font-size: 3em;
-  padding-top: 0.3em;
 }

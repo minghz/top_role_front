@@ -1,6 +1,5 @@
 .skill {
   border: 1px solid black;
-  width: 12em;
   height: 2em;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
@@ -9,7 +8,9 @@
 .skill-proficiency {
   display: inline-block;
   border: 3px solid black;
+  width: 1.2em;
   margin: 0.2em;
+  text-align: center;
   font-weight: bold;
 }
 

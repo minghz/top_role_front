@@ -1,0 +1,20 @@
+.header-container {
+  border: 1px solid black;
+  padding: 1em;
+
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.header-container > .char-name {
+  font-size: 2em;
+}
+
+.header-container > .char-race {
+  padding-top: 0.5em;
+}
+
+.header-container > .char-background {
+  padding-top: 0.5em;
+}

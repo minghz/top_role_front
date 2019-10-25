@@ -1,7 +1,6 @@
 .attribute {
+  text-align: center;
   border: 1px solid black;
-  width: 8em;
-  height: 8em;
 }
 
 .attribute-name {
