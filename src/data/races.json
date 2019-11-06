@@ -1,0 +1,125 @@
+[
+  {
+    "name": "Dragonborn",
+    "size": "medium",
+    "attributes": {
+      "str": 2,
+      "cha": 1
+    }
+  },
+  {
+    "name": "Dwarf (Hill)",
+    "size": "medium",
+    "attributes": {
+      "con": 2,
+      "wis": 1
+    }
+  },
+  {
+    "name": "Dwarf (Mountain)",
+    "size": "medium",
+    "attributes": {
+      "str": 2,
+      "con": 2
+    }
+  },
+  {
+    "name": "Elf (Drow)",
+    "size": "medium",
+    "attributes": {
+      "dex": 2,
+      "cha": 1
+    }
+  },
+  {
+    "name": "Elf (High)",
+    "size": "medium",
+    "attributes": {
+      "dex": 2,
+      "int": 1
+    }
+  },
+  {
+    "name": "Elf (Wood)",
+    "size": "medium",
+    "attributes": {
+      "dex": 2,
+      "wis": 1
+    }
+  },
+  {
+    "name": "Gnome (Forest)",
+    "size": "small",
+    "attributes": {
+      "int": 2,
+      "dex": 1
+    }
+  },
+  {
+    "name": "Gnome (Rock)",
+    "size": "small",
+    "attributes": {
+      "int": 2,
+      "con": 1
+    }
+  },
+  {
+    "name": "Half-Elf",
+    "size": "medium",
+    "attributes": {
+      "cha": 2,
+      "any_two_uniqe": true
+    }
+  },
+  {
+    "name": "Half-Orc",
+    "size": "medium",
+    "attributes": {
+      "str": 2,
+      "con": 1
+    }
+  },
+  {
+    "name": "Halfling (Lightfoot)",
+    "size": "small",
+    "attributes": {
+      "dex": 2,
+      "cha": 1
+    }
+  },
+  {
+    "name": "Halfling (Stout)",
+    "size": "small",
+    "attributes": {
+      "dex": 2,
+      "con": 1
+    }
+  },
+  {
+    "name": "Human",
+    "size": "medium",
+    "attributes": {
+      "str": 1,
+      "dex": 1,
+      "con": 1,
+      "int": 1,
+      "wis": 1,
+      "cha": 1
+    }
+  },
+  {
+    "name": "Human (Variant)",
+    "size": "medium",
+    "attributes": {
+      "any_two_uniqe": true
+    }
+  },
+  {
+    "name": "Tiefling",
+    "size": "medium",
+    "attributes": {
+      "cha": 2,
+      "int": 1
+    }
+  }
+]
