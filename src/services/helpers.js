@@ -1,3 +1,5 @@
+import RacesData from '../data/races.json';
+
 export function proficiencyBonusFromLevel(level) {
   if(level < 5){
     return 2;
@@ -15,3 +17,13 @@ export function proficiencyBonusFromLevel(level) {
 export function modifierFromAttribute(attribute) {
   return Math.floor((attribute - 10) / 2);
 };
+
+export function listNames(array) {
+  return Array.from(array, race => race["name"])
+}
+
+export function racialAttributes(raceName) {
+  var obj = RacesData.find(({ name }) => name === raceName)
+
+  return obj.attributes;
+}
