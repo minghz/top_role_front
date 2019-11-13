@@ -32,11 +32,8 @@ class Sheet extends Component {
       attributes_racial: helpers.racialAttributes("Dragonborn"),
       attributes_modifiers: helpers.modifiers(AttributesData, helpers.racialAttributes("Dragonborn"))
     }
-
-    this.handleRaceChange = this.handleRaceChange.bind(this);
   };
-
-  handleRaceChange(raceName) {
+  handleRaceChange = (raceName) => {
     var racial_attrs = helpers.racialAttributes(raceName)
     this.setState({
       attributes_modifiers: helpers.modifiers(AttributesData, racial_attrs),

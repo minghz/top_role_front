@@ -3,6 +3,15 @@ import Skill from './Skill';
 import '../css/SkillsContainer.css'
 
 class SkillsContainer extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      modifiers: props.modifiers,
+      proficient: props.proficiencies,
+      bonus: props.bonus
+    }
+  };
+
   render() {
     return(
       <div className="skills-container">
