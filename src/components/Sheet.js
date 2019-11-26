@@ -28,31 +28,16 @@ class Sheet extends Component {
       race: "Dragonborn",
       level: 5,
       proficiency_bonus: helpers.proficiencyBonusFromLevel(5),
-      attributes: {
-        str: AttributesData.str,
-        dex: AttributesData.dex,
-        con: AttributesData.con,
-        int: AttributesData.int,
-        wis: AttributesData.wis,
-        cha: AttributesData.cha,
-      },
-      attributes_modifiers: {
-        str: helpers.modifierFromAttribute(AttributesData.str),
-        dex: helpers.modifierFromAttribute(AttributesData.dex),
-        con: helpers.modifierFromAttribute(AttributesData.con),
-        int: helpers.modifierFromAttribute(AttributesData.int),
-        wis: helpers.modifierFromAttribute(AttributesData.wis),
-        cha: helpers.modifierFromAttribute(AttributesData.cha),
-      },
-      attributes_racial: helpers.racialAttributes("Dragonborn")
+      attributes: AttributesData,
+      attributes_racial: helpers.racialAttributes("Dragonborn"),
+      attributes_modifiers: helpers.modifiers(AttributesData, helpers.racialAttributes("Dragonborn"))
     }
-
-    this.handleRaceChange = this.handleRaceChange.bind(this);
   };
-
-  handleRaceChange(raceName) {
+  handleRaceChange = (raceName) => {
+    var racial_attrs = helpers.racialAttributes(raceName)
     this.setState({
-      attributes_racial: helpers.racialAttributes(raceName),
+      attributes_modifiers: helpers.modifiers(AttributesData, racial_attrs),
+      attributes_racial: racial_attrs,
       race: raceName,
     });
   }
@@ -71,6 +56,7 @@ class Sheet extends Component {
         <LevelsContainer value={this.state.level}/>
         <AttributesContainer
           attributes={this.state.attributes}
+          attributes_racial={this.state.attributes_racial}
           modifiers={this.state.attributes_modifiers}/>
         <SkillsContainer
           proficiencies={ProficienciesData}

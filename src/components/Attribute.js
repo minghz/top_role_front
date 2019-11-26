@@ -6,7 +6,7 @@ class Attribute extends Component {
     return(
       <div className="attribute">
         <div className="attribute-name">{this.props.name}</div>
-        <div className="attribute-value">{this.props.value}</div>
+        <div className="attribute-value">{this.props.value} + {this.props.racial}</div>
         <div className="attribute-mod">{this.props.modifier}</div>
       </div>
     )
