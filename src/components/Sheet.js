@@ -19,6 +19,7 @@ import ItemsContainer from './ItemsContainer';
 import AttributesData from '../data/attributes.json';
 import ProficienciesData from '../data/proficiencies.json';
 import RacesData from '../data/races.json';
+import HealthPointsData from '../data/health.json';
 
 class Sheet extends Component {
   constructor(props){
@@ -63,7 +64,11 @@ class Sheet extends Component {
           bonus={this.state.proficiency_bonus}
           modifiers={this.state.attributes_modifiers}/>
         <ProficienciesContainer />
-        <StatsContainer />
+        <StatsContainer
+          dexMod={this.state.attributes_modifiers.dex}
+          max={HealthPointsData.max}
+          current={HealthPointsData.current}
+          tmp={HealthPointsData.tmp}/>
         <CharContainer />
         <AtacksContainer />
         <ItemsContainer />
