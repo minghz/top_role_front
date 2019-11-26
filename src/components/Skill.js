@@ -22,22 +22,29 @@ class Skill extends Component {
     this.state = {
       name: props.name,
       proficient: props.proficient,
-      bonus: props.bonus,
-      modifier: props.modifier,
       total: calculateTotalMod(props.proficient, props.bonus, props.modifier)
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.modifier !== prevProps.modifier){
+      this.setState({
+        modifier: this.props.modifier,
+        total: calculateTotalMod(this.props.proficient, this.props.bonus, this.props.modifier)
+      });
+    }
   }
 
   changeTotal(){
     if(this.state.proficient)
       this.setState({
         proficient: false,
-        total: calculateTotalMod(false, this.state.bonus, this.state.modifier)
+        total: calculateTotalMod(false, this.props.bonus, this.props.modifier)
       });
     else
       this.setState({
         proficient: true,
-        total: calculateTotalMod(true, this.state.bonus, this.state.modifier)
+        total: calculateTotalMod(true, this.props.bonus, this.props.modifier)
       });
   }
 

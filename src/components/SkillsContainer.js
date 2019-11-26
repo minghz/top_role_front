@@ -3,15 +3,6 @@ import Skill from './Skill';
 import '../css/SkillsContainer.css'
 
 class SkillsContainer extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      modifiers: props.modifiers,
-      proficient: props.proficiencies,
-      bonus: props.bonus
-    }
-  };
-
   render() {
     return(
       <div className="skills-container">
@@ -20,7 +11,7 @@ class SkillsContainer extends Component {
         <Skill modifier={this.props.modifiers.dex} proficient={this.props.proficiencies.acr} bonus={this.props.bonus} name="Acrobatics"      />
         <Skill modifier={this.props.modifiers.dex} proficient={this.props.proficiencies.soh} bonus={this.props.bonus} name="Sleight of Hand" />
         <Skill modifier={this.props.modifiers.dex} proficient={this.props.proficiencies.ste} bonus={this.props.bonus} name="Stealth"         />
-                                                                       
+
         <Skill modifier={this.props.modifiers.int} proficient={this.props.proficiencies.arc} bonus={this.props.bonus} name="Arcana"          />
         <Skill modifier={this.props.modifiers.int} proficient={this.props.proficiencies.his} bonus={this.props.bonus} name="History"         />
         <Skill modifier={this.props.modifiers.int} proficient={this.props.proficiencies.inv} bonus={this.props.bonus} name="Investigation"   />
@@ -32,7 +23,7 @@ class SkillsContainer extends Component {
         <Skill modifier={this.props.modifiers.wis} proficient={this.props.proficiencies.med} bonus={this.props.bonus} name="Medicine"        />
         <Skill modifier={this.props.modifiers.wis} proficient={this.props.proficiencies.per} bonus={this.props.bonus} name="Perception"      />
         <Skill modifier={this.props.modifiers.wis} proficient={this.props.proficiencies.sur} bonus={this.props.bonus} name="Survival"        />
-                                                                        
+
         <Skill modifier={this.props.modifiers.cha} proficient={this.props.proficiencies.dec} bonus={this.props.bonus} name="Deception"       />
         <Skill modifier={this.props.modifiers.cha} proficient={this.props.proficiencies.int} bonus={this.props.bonus} name="Intimidation"    />
         <Skill modifier={this.props.modifiers.cha} proficient={this.props.proficiencies.prf} bonus={this.props.bonus} name="Performance"     />
