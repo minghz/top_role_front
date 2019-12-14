@@ -1,4 +1,5 @@
 import RacesData from '../data/races.json';
+import BackgroundsData from '../data/backgrounds.json';
 
 export function proficiencyBonusFromLevel(level) {
   if(level < 5){
@@ -44,4 +45,9 @@ export function racialAttributes(raceName) {
     wis: obj.attributes.wis || 0,
     cha: obj.attributes.cha || 0
   }
+}
+
+export function backgroundParagraphs(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  return background.entries
 }

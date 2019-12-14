@@ -19,6 +19,7 @@ import ItemsContainer from './ItemsContainer';
 import AttributesData from '../data/attributes.json';
 import ProficienciesData from '../data/proficiencies.json';
 import RacesData from '../data/races.json';
+import BackgroundsData from '../data/backgrounds.json';
 import HealthPointsData from '../data/health.json';
 
 class Sheet extends Component {
@@ -27,6 +28,8 @@ class Sheet extends Component {
     this.state = {
       char_name: "Tracx Lury",
       race: "Dragonborn",
+      background: "Sailor",
+      background_paragraphs: helpers.backgroundParagraphs("Sailor"),
       level: 5,
       proficiency_bonus: helpers.proficiencyBonusFromLevel(5),
       attributes: AttributesData,
@@ -34,12 +37,20 @@ class Sheet extends Component {
       attributes_modifiers: helpers.modifiers(AttributesData, helpers.racialAttributes("Dragonborn"))
     }
   };
+
   handleRaceChange = (raceName) => {
     var racial_attrs = helpers.racialAttributes(raceName)
     this.setState({
       attributes_modifiers: helpers.modifiers(AttributesData, racial_attrs),
       attributes_racial: racial_attrs,
       race: raceName,
+    });
+  }
+
+  handleBackgroundChange = (backgroundName) => {
+    this.setState({
+      background: backgroundName,
+      background_paragraphs: helpers.backgroundParagraphs(backgroundName)
     });
   }
 
@@ -52,7 +63,10 @@ class Sheet extends Component {
             value={this.state.race}
             races={helpers.listNames(RacesData)}
             onRaceChange={this.handleRaceChange} />
-          <CharBackground value="Far Traveler"/>
+          <CharBackground
+            value={this.state.background}
+            backgrounds={helpers.listNames(BackgroundsData)}
+            onBackgroundChange={this.handleBackgroundChange} />
         </div>
         <LevelsContainer value={this.state.level}/>
         <AttributesContainer
@@ -69,7 +83,7 @@ class Sheet extends Component {
           max={HealthPointsData.max}
           current={HealthPointsData.current}
           tmp={HealthPointsData.tmp}/>
-        <CharContainer />
+        <CharContainer paragraphs={this.state.background_paragraphs}/>
         <AtacksContainer />
         <ItemsContainer />
       </div>

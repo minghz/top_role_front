@@ -5,7 +5,9 @@ class CharContainer extends Component {
   render() {
     return(
       <div className="char-container">
-        char
+        { this.props.paragraphs.map((paragraph) => {
+          return <p>{paragraph}</p>
+        })}
       </div>
     )
   }

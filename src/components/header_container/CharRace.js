@@ -20,6 +20,7 @@ class CharRace extends Component {
   render(){
     return(
       <div className="char-race">
+        <strong>Race</strong>
         <select value={this.state.value} onChange={this.handleChange} >
           { this.state.races.map((value, index) => {
               return <option key={index} value={value}>{value}</option>
