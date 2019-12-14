@@ -9,8 +9,8 @@ class StatsContainer extends Component {
     return(
       <div className="stats-container">
         <ArmorClass dexMod={this.props.dexMod} armorBase={0} shieldMod={0}/>
-        <HealthPoints max={this.props.max} current={this.props.current} />
         <TemporaryHealthPoints points={this.props.tmp} />
+        <HealthPoints max={this.props.max} current={this.props.current} />
       </div>
     )
   }
