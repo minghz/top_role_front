@@ -26,7 +26,7 @@ class Sheet extends Component {
   constructor(props){
     super(props);
     this.state = {
-      char_name: "Tracx Lury",
+      charName: "Tracx Lury",
       race: "Dragonborn",
       background: "Sailor",
       background_paragraphs: helpers.backgroundParagraphs("Sailor"),
@@ -54,11 +54,17 @@ class Sheet extends Component {
     });
   }
 
+  handleNameChange = (charName) => {
+    this.setState({charName: charName});
+  }
+
   render() {
     return (
       <div className="sheet">
         <div className="header-container">
-          <CharName value={this.state.char_name} />
+          <CharName
+            value={this.state.charName}
+            onNameChange={this.handleNameChange}/>
           <CharRace
             value={this.state.race}
             races={helpers.listNames(RacesData)}
