@@ -21,7 +21,9 @@ class Skill extends Component {
     super(props);
     this.state = {
       name: props.name,
+      bonus: props.bonus,
       proficient: props.proficient,
+      modifier: props.modifier,
       total: calculateTotalMod(props.proficient, props.bonus, props.modifier)
     };
   }
@@ -30,7 +32,7 @@ class Skill extends Component {
     if(this.props.modifier !== prevProps.modifier){
       this.setState({
         modifier: this.props.modifier,
-        total: calculateTotalMod(this.props.proficient, this.props.bonus, this.props.modifier)
+        total: calculateTotalMod(this.state.proficient, this.state.bonus, this.props.modifier)
       });
     }
   }
@@ -39,12 +41,12 @@ class Skill extends Component {
     if(this.state.proficient)
       this.setState({
         proficient: false,
-        total: calculateTotalMod(false, this.props.bonus, this.props.modifier)
+        total: calculateTotalMod(false, this.state.bonus, this.state.modifier)
       });
     else
       this.setState({
         proficient: true,
-        total: calculateTotalMod(true, this.props.bonus, this.props.modifier)
+        total: calculateTotalMod(true, this.state.bonus, this.state.modifier)
       });
   }
 
