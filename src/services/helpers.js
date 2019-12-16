@@ -1,6 +1,25 @@
 import RacesData from '../data/races.json';
 import BackgroundsData from '../data/backgrounds.json';
 
+export function attributeNameFromType(type) {
+  switch(type) {
+    case 'str':
+      return 'Strength'
+    case 'dex':
+      return 'Dexterity'
+    case 'con':
+      return 'Constitution'
+    case 'int':
+      return 'Inteligence'
+    case 'wis':
+      return 'Wisdom'
+    case 'cha':
+      return 'Charisma'
+    default:
+      return 'N/A'
+  }
+}
+
 export function proficiencyBonusFromLevel(level) {
   if(level < 5){
     return 2;

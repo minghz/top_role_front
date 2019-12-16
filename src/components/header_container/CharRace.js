@@ -13,7 +13,6 @@ class CharRace extends Component {
 
   handleChange(event) {
     this.setState({value: event.currentTarget.value});
-    //this.state.callback(event.currentTarget.value);
     this.props.onRaceChange(event.currentTarget.value);
   }
 
