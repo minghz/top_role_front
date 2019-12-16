@@ -4,20 +4,23 @@
 }
 
 .attribute-name {
+  font-size: 1.3em;
   font-weight: bold;
 }
 
 .attribute-value {
-  font-size: 2em;
+  font-size: 1.5em;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
 
 .attribute-mod {
+  font-size: 1.8em;
+  font-weight: bold;
   border: 1px solid black;
   border-radius: 50%;
-  width: 3em;
-  height: 2.2em;
-  padding-top: 0.8em;
+  width: 1.8em;
+  height: 1.5em;
+  padding-top: 0.2em;
   margin: auto;
 }

@@ -26,7 +26,7 @@ class Sheet extends Component {
   constructor(props){
     super(props);
     this.state = {
-      char_name: "Tracx Lury",
+      charName: "Tracx Lury",
       race: "Dragonborn",
       background: "Sailor",
       background_paragraphs: helpers.backgroundParagraphs("Sailor"),
@@ -37,6 +37,22 @@ class Sheet extends Component {
       attributes_modifiers: helpers.modifiers(AttributesData, helpers.racialAttributes("Dragonborn"))
     }
   };
+
+  handleAttributeChange = (type, value) => {
+    var new_attributes = this.state.attributes
+    var changed_attribute = {}
+    changed_attribute[type] = value
+    new_attributes = Object.assign(new_attributes, changed_attribute)
+    this.setState({attributes: new_attributes})
+  }
+
+  handleModifierChange = (type, value) => {
+    var new_modifiers = this.state.attributes_modifiers
+    var changed_modifier = {}
+    changed_modifier[type] = value
+    new_modifiers = Object.assign(new_modifiers, changed_modifier)
+    this.setState({attributes_modifiers: new_modifiers})
+  }
 
   handleRaceChange = (raceName) => {
     var racial_attrs = helpers.racialAttributes(raceName)
@@ -54,11 +70,17 @@ class Sheet extends Component {
     });
   }
 
+  handleNameChange = (charName) => {
+    this.setState({charName: charName});
+  }
+
   render() {
     return (
       <div className="sheet">
         <div className="header-container">
-          <CharName value={this.state.char_name} />
+          <CharName
+            value={this.state.charName}
+            onNameChange={this.handleNameChange}/>
           <CharRace
             value={this.state.race}
             races={helpers.listNames(RacesData)}
@@ -71,8 +93,10 @@ class Sheet extends Component {
         <LevelsContainer value={this.state.level}/>
         <AttributesContainer
           attributes={this.state.attributes}
+          onAttributeChange={this.handleAttributeChange}
           attributes_racial={this.state.attributes_racial}
-          modifiers={this.state.attributes_modifiers}/>
+          modifiers={this.state.attributes_modifiers}
+          onModifierChange={this.handleModifierChange}/>
         <SkillsContainer
           proficiencies={ProficienciesData}
           bonus={this.state.proficiency_bonus}
