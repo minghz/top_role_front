@@ -6,6 +6,8 @@ class SkillsContainer extends Component {
   render() {
     return(
       <div className="skills-container">
+        <strong>Skills</strong>
+
         <Skill modifier={this.props.modifiers.str} proficient={this.props.proficiencies.ath} bonus={this.props.bonus} name="Athletics" />
 
         <Skill modifier={this.props.modifiers.dex} proficient={this.props.proficiencies.acr} bonus={this.props.bonus} name="Acrobatics"      />
