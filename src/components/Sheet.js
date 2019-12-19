@@ -4,6 +4,7 @@ import * as helpers from '../services/helpers';
 
 import '../css/HeaderContainer.css';
 import CharName from './header_container/CharName';
+import CharClass from './header_container/CharClass';
 import CharRace from './header_container/CharRace';
 import CharBackground from './header_container/CharBackground';
 
@@ -19,6 +20,7 @@ import ItemsContainer from './ItemsContainer';
 import AttributesData from '../data/attributes.json';
 import ProficienciesData from '../data/proficiencies.json';
 import RacesData from '../data/races.json';
+import ClassesData from '../data/classes.json';
 import BackgroundsData from '../data/backgrounds.json';
 import HealthPointsData from '../data/health.json';
 
@@ -28,6 +30,7 @@ class Sheet extends Component {
     this.state = {
       charName: "Tracx Lury",
       race: "Dragonborn",
+      class: "Barbarian",
       background: "Sailor",
       background_paragraphs: helpers.backgroundParagraphs("Sailor"),
       level: 5,
@@ -52,6 +55,10 @@ class Sheet extends Component {
     changed_modifier[type] = value
     new_modifiers = Object.assign(new_modifiers, changed_modifier)
     this.setState({attributes_modifiers: new_modifiers})
+  }
+
+  handleClassChange = (className) => {
+    //TODO
   }
 
   handleRaceChange = (raceName) => {
@@ -81,6 +88,10 @@ class Sheet extends Component {
           <CharName
             value={this.state.charName}
             onNameChange={this.handleNameChange}/>
+          <CharClass
+            value={this.state.class}
+            classes={helpers.listNames(ClassesData)}
+            onClassChange={this.handleClassChange}/>
           <CharRace
             value={this.state.race}
             races={helpers.listNames(RacesData)}

@@ -50,7 +50,7 @@ export function modifiers(base, racial) {
 }
 
 export function listNames(array) {
-  return Array.from(array, race => race["name"])
+  return Array.from(array, item => item["name"])
 }
 
 export function racialAttributes(raceName) {

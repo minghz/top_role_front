@@ -1,0 +1,444 @@
+[
+  {
+    "name": "Barbarian",
+    "hitDice": {
+      "number": 1,
+      "faces": 12
+    },
+    "proficiencies": {
+      "savingThrow": ["str", "con"],
+      "armor": ["light", "medium", "shields"],
+      "weapons": ["simple", "martial"],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "animal handling",
+              "athletics",
+              "intimidation",
+              "nature",
+              "perception",
+              "survival"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Bard",
+    "hitDice": {
+      "number": 1,
+      "faces": 8
+    },
+    "proficiencies": {
+      "savingThrow": ["dex", "cha"],
+      "armor": ["light"],
+      "weapons": ["simple","hand crossbows", "longswords", "rapiers", "shortswords"],
+      "tools": ["three musical instruments of your choice"],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "athletics",
+              "acrobatics",
+              "sleight of hand",
+              "stealth",
+              "arcana",
+              "history",
+              "investigation",
+              "nature",
+              "religion",
+              "animal handling",
+              "insight",
+              "medicine",
+              "perception",
+              "survival",
+              "deception",
+              "intimidation",
+              "performance",
+              "persuasion"
+            ],
+            "count": 3
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Cleric",
+    "hitDice": {
+      "number": 1,
+      "faces": 8
+    },
+    "proficiencies": {
+      "savingThrow": ["wis", "cha"],
+      "armor": ["light", "medium", "shields"],
+      "weapons": ["simple"],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "history",
+              "insight",
+              "medicine",
+              "persuasion",
+              "religion"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Druid",
+    "hitDice": {
+      "number": 1,
+      "faces": 8
+    },
+    "proficiencies": {
+      "savingThrow": ["int", "wis"],
+      "armor": [
+        "light",
+        "medium",
+        "shields (druids will not wear armor or use shields made of metal)"
+      ],
+      "weapons": [
+        "clubs",
+        "daggers",
+        "darts",
+        "javelins",
+        "maces",
+        "quarterstaffs",
+        "scimitars",
+        "sickles",
+        "slings",
+        "spears"
+      ],
+      "tools": [
+        "Herbalism kit"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "arcana",
+              "animal handling",
+              "insight",
+              "medicine",
+              "nature",
+              "perception",
+              "religion",
+              "survival"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+
+  },
+  {
+    "name": "Fighter",
+    "hitDice": {
+      "number": 1,
+      "faces": 10
+    },
+    "proficiencies": {
+      "savingThrow": [
+        "str",
+        "con"
+      ],
+      "armor": [
+        "light",
+        "medium",
+        "heavy",
+        "shields"
+      ],
+      "weapons": [
+        "simple",
+        "martial"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "acrobatics",
+              "animal handling",
+              "athletics",
+              "history",
+              "insight",
+              "intimidation",
+              "perception",
+              "survival"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Monk",
+    "hitDice": {
+      "number": 1,
+      "faces": 8
+    },
+    "proficiencies": {
+      "savingThrow": [
+        "str",
+        "dex"
+      ],
+      "weapons": [
+        "simple",
+        "shortswords"
+      ],
+      "tools": [
+        "any one type of artisan's tools or any one musical instrument of your choice"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "acrobatics",
+              "athletics",
+              "history",
+              "insight",
+              "religion",
+              "stealth"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Paladin",
+    "hitDice": {
+      "number": 1,
+      "faces": 10
+    },
+    "proficiencies": {
+      "savingThrow": [
+        "wis",
+        "cha"
+      ],
+      "armor": [
+        "light",
+        "medium",
+        "heavy",
+        "shields"
+      ],
+      "weapons": [
+        "simple",
+        "martial"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "athletics",
+              "insight",
+              "intimidation",
+              "medicine",
+              "persuasion",
+              "religion"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Ranger",
+    "hitDice": {
+      "number": 1,
+      "faces": 10
+    },
+    "proficiencies": {
+      "savingThrow": [
+        "str",
+        "dex"
+      ],
+      "armor": [
+        "light",
+        "medium",
+        "shields"
+      ],
+      "weapons": [
+        "simple",
+        "martial"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "animal handling",
+              "athletics",
+              "insight",
+              "investigation",
+              "nature",
+              "perception",
+              "stealth",
+              "survival"
+            ],
+            "count": 3
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Rogue",
+    "hitDice": {
+      "number": 1,
+      "faces": 8
+    },
+    "proficiencies": {
+      "savingThrow": [
+        "dex",
+        "int"
+      ],
+      "armor": [
+        "light"
+      ],
+      "weapons": [
+        "simple",
+        "hand crossbows",
+        "longswords",
+        "rapiers",
+        "shortswords"
+      ],
+      "tools": [
+        "thieves' tools"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "acrobatics",
+              "athletics",
+              "deception",
+              "insight",
+              "intimidation",
+              "investigation",
+              "perception",
+              "performance",
+              "persuasion",
+              "sleight of hand",
+              "stealth"
+            ],
+            "count": 4
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Sorcerer",
+    "hitDice": {
+      "number": 1,
+      "faces": 6
+    },
+    "proficiencies": [
+      "con",
+      "cha"
+    ],
+    "weapons": [
+      "daggers",
+      "darts",
+      "slings",
+      "quarterstaffs",
+      "light crossbows"
+    ],
+    "skills": [
+      {
+        "choose": {
+          "from": [
+            "arcana",
+            "deception",
+            "insight",
+            "intimidation",
+            "persuasion",
+            "religion"
+          ],
+          "count": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "Warlock",
+    "hitDice": {
+      "number": 1,
+      "faces": 8
+    },
+    "proficiencies": {
+      "savingThrow": [
+        "wis",
+        "cha"
+      ],
+      "armor": [
+        "light"
+      ],
+      "weapons": [
+        "simple"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "arcana",
+              "deception",
+              "history",
+              "intimidation",
+              "investigation",
+              "nature",
+              "religion"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Wizard",
+    "hitDice": {
+      "number": 1,
+      "faces": 6
+    },
+    "proficiencies": {
+      "savingThrow": [
+        "int",
+        "wis"
+      ],
+      "weapons": [
+        "daggers",
+        "darts",
+        "slings",
+        "quarterstaffs",
+        "light crossbows"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "arcana",
+              "history",
+              "insight",
+              "investigation",
+              "medicine",
+              "religion"
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  }
+]
