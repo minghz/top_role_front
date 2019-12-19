@@ -8,6 +8,10 @@
   font-weight: bold;
 }
 
+.attribute-base {
+  text-align: center;
+}
+
 .attribute-value {
   font-size: 1.5em;
   padding-top: 0.2em;

@@ -44,6 +44,13 @@ class Sheet extends Component {
     }
   };
 
+  handleLevelChange = (newLevel) => {
+    this.setState({
+      level: newLevel,
+      proficiencyBonus: helpers.proficiencyBonusFromLevel(newLevel),
+    })
+  }
+
   handleAttributeChange = (type, value) => {
     var new_attributes = this.state.attributes
     var changed_attribute = {}
@@ -110,7 +117,10 @@ class Sheet extends Component {
             backgrounds={helpers.listNames(BackgroundsData)}
             onBackgroundChange={this.handleBackgroundChange} />
         </div>
-        <LevelsContainer value={this.state.level}/>
+        <LevelsContainer
+          value={this.state.level}
+          proficiencyBonus={this.state.proficiencyBonus}
+          onLevelChange={this.handleLevelChange}/>
         <AttributesContainer
           attributes={this.state.attributes}
           onAttributeChange={this.handleAttributeChange}

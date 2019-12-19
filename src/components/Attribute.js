@@ -44,12 +44,10 @@ class Attribute extends Component {
         <div className="attribute-name">
           {helpers.attributeNameFromType(this.props.type)}
         </div>
-        <div className="attribute-base">
-          <input
-            type="number"
-            value={this.state.base}
-            onChange={this.handleBaseChange} />
-        </div>
+        <input className="attribute-base"
+          type="number"
+          value={this.state.base}
+          onChange={this.handleBaseChange} />
         <div className="attribute-racial">racial: {this.state.racial}</div>
         <div className="attribute-value">{this.state.base + this.state.racial}</div>
         <div className="attribute-mod">{this.state.modifier}</div>

@@ -35,6 +35,13 @@ class Skill extends Component {
         total: calculateTotalMod(this.state.proficient, this.state.bonus, this.props.modifier)
       });
     }
+
+    if(this.props.bonus !== prevProps.bonus){
+      this.setState({
+        bonus: this.props.bonus,
+        total: calculateTotalMod(this.state.proficient, this.props.bonus, this.state.modifier)
+      });
+    }
   }
 
   changeTotal(){
