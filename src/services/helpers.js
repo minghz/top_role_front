@@ -1,5 +1,6 @@
 import RacesData from '../data/races.json';
 import BackgroundsData from '../data/backgrounds.json';
+import ClassesData from '../data/classes.json';
 
 export function attributeNameFromType(type) {
   switch(type) {
@@ -31,6 +32,19 @@ export function proficiencyBonusFromLevel(level) {
     return 5;
   } else {
     return 6;
+  }
+}
+
+export function savingProficienciesFromClass(className) {
+  var item = ClassesData.find(({name}) => name === className)
+  var attr_keys = item.proficiencies.savingThrow // array with attribute keys
+  return {
+    str: attr_keys.includes("str"),
+    dex: attr_keys.includes("dex"),
+    con: attr_keys.includes("con"),
+    int: attr_keys.includes("int"),
+    wis: attr_keys.includes("wis"),
+    cha: attr_keys.includes("cha")
   }
 }
 

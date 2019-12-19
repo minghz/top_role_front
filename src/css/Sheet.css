@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas: "header header header header"
                        "levels levels stats  char"
-                       "attrs  skills stats  char"
+                       "attrs  saves stats  char"
                        "attrs  skills atks   items"
                        "profs  profs  atks   items";
   grid-template-columns: 1fr 2fr 3fr 3fr;

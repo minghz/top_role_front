@@ -344,32 +344,34 @@
       "number": 1,
       "faces": 6
     },
-    "proficiencies": [
-      "con",
-      "cha"
-    ],
-    "weapons": [
-      "daggers",
-      "darts",
-      "slings",
-      "quarterstaffs",
-      "light crossbows"
-    ],
-    "skills": [
-      {
-        "choose": {
-          "from": [
-            "arcana",
-            "deception",
-            "insight",
-            "intimidation",
-            "persuasion",
-            "religion"
-          ],
-          "count": 2
+    "proficiencies": {
+      "savingThrow": [
+        "con",
+        "cha"
+      ],
+      "weapons": [
+        "daggers",
+        "darts",
+        "slings",
+        "quarterstaffs",
+        "light crossbows"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "arcana",
+              "deception",
+              "insight",
+              "intimidation",
+              "persuasion",
+              "religion"
+            ],
+            "count": 2
+          }
         }
-      }
-    ]
+      ]
+    }
   },
   {
     "name": "Warlock",
@@ -384,26 +386,26 @@
       ],
       "armor": [
         "light"
-      ],
-      "weapons": [
-        "simple"
-      ],
-      "skills": [
-        {
-          "choose": {
-            "from": [
-              "arcana",
-              "deception",
-              "history",
-              "intimidation",
-              "investigation",
-              "nature",
-              "religion"
-            ],
-            "count": 2
+        ],
+        "weapons": [
+          "simple"
+        ],
+        "skills": [
+          {
+            "choose": {
+              "from": [
+                "arcana",
+                "deception",
+                "history",
+                "intimidation",
+                "investigation",
+                "nature",
+                "religion"
+              ],
+              "count": 2
+            }
           }
-        }
-      ]
+        ]
     }
   },
   {

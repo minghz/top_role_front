@@ -11,6 +11,8 @@ import CharBackground from './header_container/CharBackground';
 import LevelsContainer from './LevelsContainer';
 import AttributesContainer from './AttributesContainer';
 import SkillsContainer from './SkillsContainer';
+import SavingThrowsContainer from './SavingThrowsContainer';
+
 import ProficienciesContainer from './ProficienciesContainer';
 import StatsContainer from './StatsContainer';
 import CharContainer from './CharContainer';
@@ -34,7 +36,8 @@ class Sheet extends Component {
       background: "Sailor",
       background_paragraphs: helpers.backgroundParagraphs("Sailor"),
       level: 5,
-      proficiency_bonus: helpers.proficiencyBonusFromLevel(5),
+      proficiencyBonus: helpers.proficiencyBonusFromLevel(5),
+      savingProficiencies: helpers.savingProficienciesFromClass("Barbarian"),
       attributes: AttributesData,
       attributes_racial: helpers.racialAttributes("Dragonborn"),
       attributes_modifiers: helpers.modifiers(AttributesData, helpers.racialAttributes("Dragonborn"))
@@ -58,7 +61,13 @@ class Sheet extends Component {
   }
 
   handleClassChange = (className) => {
-    //TODO
+    var newSavingProficiencies = helpers.savingProficienciesFromClass(className)
+    this.setState({
+      savingProficiencies: newSavingProficiencies
+    })
+    //TODO Choose two skills from list
+    //TODO armor/weapon/instrument/tools
+    //TODO HitDice change
   }
 
   handleRaceChange = (raceName) => {
@@ -108,9 +117,13 @@ class Sheet extends Component {
           attributes_racial={this.state.attributes_racial}
           modifiers={this.state.attributes_modifiers}
           onModifierChange={this.handleModifierChange}/>
+        <SavingThrowsContainer
+          modifiers={this.state.attributes_modifiers}
+          bonus={this.state.proficiencyBonus}
+          savingProficiencies={this.state.savingProficiencies} />
         <SkillsContainer
           proficiencies={ProficienciesData}
-          bonus={this.state.proficiency_bonus}
+          bonus={this.state.proficiencyBonus}
           modifiers={this.state.attributes_modifiers}/>
         <ProficienciesContainer />
         <StatsContainer
