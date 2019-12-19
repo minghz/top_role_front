@@ -44,6 +44,13 @@ class SavingThrow extends Component {
         total: calculateTotalMod(this.props.proficient, this.state.bonus, this.state.modifier)
       });
     }
+
+    if(this.props.bonus !== prevProps.bonus) {
+      this.setState({
+        bonus: this.props.bonus,
+        total: calculateTotalMod(this.state.proficient, this.props.bonus, this.state.modifier)
+      });
+    }
   }
 
   changeTotal(){
