@@ -43,16 +43,22 @@ class Attribute extends Component {
   render() {
     return(
       <div className="attribute">
-        <div className="attribute-name">
+        <div className="attribute-name" data-testid="attributeName">
           {helpers.attributeNameFromType(this.props.type)}
         </div>
-        <input className="attribute-base"
+        <input className="attribute-base" data-testid="attributeBase"
           type="number"
           value={this.state.base}
           onChange={this.handleBaseChange} />
-        <div className="attribute-racial">racial: {this.state.racial}</div>
-        <div className="attribute-value">{this.state.base + this.state.racial}</div>
-        <div className="attribute-mod">{this.state.modifier}</div>
+        <div className="attribute-racial" data-testid="attributeRacial">
+          racial: {this.state.racial}
+        </div>
+        <div className="attribute-value" data-testid="attributeTotal">
+          {this.state.base + this.state.racial}
+        </div>
+        <div className="attribute-mod" data-testid="attributeMod">
+          {this.state.modifier}
+        </div>
       </div>
     )
   }

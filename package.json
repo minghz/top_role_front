@@ -29,6 +29,9 @@
     ]
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^8.0.2",
+    "jest": "^24.9.0",
+    "jest-dom": "^4.0.0"
   }
 }
