@@ -1,9 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](https://github.com/minghz/top_role_front/workflows/Tests/badge.svg)
 
-## Available Scripts
+## About
+This project aims to create a fully dynamic D&D character sheet. This means that any changes to a particular attribute in one location of the sheet will propagate to all of the other other affected areas of the sheet, thus rendering it fully "Reactive".
 
-In the project directory, you can run:
+For example, increasing Strength attribute points will auto-update the attribute modifer, and the total bonus for all skill checks, and saving throws.
 
+This will enable a fully dynamic character sheet, where you can tweak individual parts and have it be reflected immediately everywhere. No more need to create a character level-by-level from scratch!
+
+## Technology
+React, Jest, GithubActions, Javascript, HTML/CSS
+
+## Data Source
+Shamelessly parsed from [5e.tools source](https://github.com/TheGiddyLimit/TheGiddyLimit.github.io).
+Also sticking to PHB sources for now.
+
+## Setup
 ### `yarn start`
 
 Runs the app in the development mode.<br />
@@ -27,42 +38,5 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contributing
+Send me pull requests :)
