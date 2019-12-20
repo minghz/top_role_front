@@ -1,0 +1,13 @@
+name: Tests
+# This workflow is triggered on pushes to the repository.
+on: [push]
+
+jobs:
+  build:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Action for Yarn
+        uses: Borales/actions-yarn@v2.1.0
+        with:
+          cmd: test
