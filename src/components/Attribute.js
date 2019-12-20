@@ -27,7 +27,9 @@ class Attribute extends Component {
   }
 
   handleBaseChange(event) {
-    var newBase = parseInt(event.target.value)
+    var newBase = parseInt(event.target.value) || 0
+    event.target.value = newBase
+
     var newModifier = helpers.modifierFromAttribute(newBase + this.state.racial)
 
     this.setState({

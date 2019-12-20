@@ -1,8 +1,8 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './App.css';
+import '../css/App.css';
 
-import Sheet from './components/Sheet';
+import Sheet from './Sheet';
 
 class App extends React.Component {
   render() {
