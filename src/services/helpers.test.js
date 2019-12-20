@@ -19,7 +19,7 @@ test('#proficiencyBonusFromLevel', () => {
 });
 
 test('#modifierFromAttribute', () => {
-  expect(helpers.modifierFromAttribute(7)).toBe(-0);
+  expect(helpers.modifierFromAttribute(7)).toBe(-2);
   expect(helpers.modifierFromAttribute(8)).toBe(-1);
   expect(helpers.modifierFromAttribute(10)).toBe(0);
   expect(helpers.modifierFromAttribute(11)).toBe(0);
