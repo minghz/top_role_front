@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Sheet.css';
 import * as helpers from '../services/helpers';
+import * as dataParsers from '../services/dataParsers';
 
 import '../css/HeaderContainer.css';
 import CharName from './header_container/CharName';
@@ -34,13 +35,13 @@ class Sheet extends Component {
       race: "Dragonborn",
       class: "Barbarian",
       background: "Sailor",
-      background_paragraphs: helpers.backgroundParagraphs("Sailor"),
+      background_paragraphs: dataParsers.backgroundParagraphs("Sailor"),
       level: 5,
       proficiencyBonus: helpers.proficiencyBonusFromLevel(5),
-      savingProficiencies: helpers.savingProficienciesFromClass("Barbarian"),
+      savingProficiencies: dataParsers.savingProficienciesFromClass("Barbarian"),
       attributes: AttributesData,
-      attributes_racial: helpers.racialAttributes("Dragonborn"),
-      attributes_modifiers: helpers.modifiers(AttributesData, helpers.racialAttributes("Dragonborn"))
+      attributes_racial: dataParsers.racialAttributes("Dragonborn"),
+      attributes_modifiers: helpers.modifiers(AttributesData, dataParsers.racialAttributes("Dragonborn"))
     }
   };
 
@@ -68,7 +69,7 @@ class Sheet extends Component {
   }
 
   handleClassChange = (className) => {
-    var newSavingProficiencies = helpers.savingProficienciesFromClass(className)
+    var newSavingProficiencies = dataParsers.savingProficienciesFromClass(className)
     this.setState({
       savingProficiencies: newSavingProficiencies
     })
@@ -78,7 +79,7 @@ class Sheet extends Component {
   }
 
   handleRaceChange = (raceName) => {
-    var racial_attrs = helpers.racialAttributes(raceName)
+    var racial_attrs = dataParsers.racialAttributes(raceName)
     this.setState({
       attributes_modifiers: helpers.modifiers(AttributesData, racial_attrs),
       attributes_racial: racial_attrs,
@@ -89,7 +90,7 @@ class Sheet extends Component {
   handleBackgroundChange = (backgroundName) => {
     this.setState({
       background: backgroundName,
-      background_paragraphs: helpers.backgroundParagraphs(backgroundName)
+      background_paragraphs: dataParsers.backgroundParagraphs(backgroundName)
     });
   }
 
