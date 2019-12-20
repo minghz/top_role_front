@@ -1,6 +1,6 @@
 ![](https://github.com/minghz/top_role_front/workflows/Tests/badge.svg)
 
-## About
+## Top Role - D&D Character Sheet
 This project aims to create a fully dynamic D&D character sheet. This means that any changes to a particular attribute in one location of the sheet will propagate to all of the other other affected areas of the sheet, thus rendering it fully "Reactive".
 
 For example, increasing Strength attribute points will auto-update the attribute modifer, and the total bonus for all skill checks, and saving throws.
