@@ -23,3 +23,23 @@ it('changes current hp', () => {
 
   expect(getByTestId('currentHp').value).toBe('16')
 })
+
+it('will never be negative', () => {
+  const { getByTestId } = render(
+    <HealthPoints max={20} current={13}
+                  onHpChange={()=>{}}/>
+  );
+  fireEvent.change(getByTestId('currentHp'), { target: { value: '-4' } })
+
+  expect(getByTestId('currentHp').value).toBe('0')
+})
+
+it('will never be greater than max', () => {
+  const { getByTestId } = render(
+    <HealthPoints max={20} current={13}
+                  onHpChange={()=>{}}/>
+  );
+  fireEvent.change(getByTestId('currentHp'), { target: { value: '45' } })
+
+  expect(getByTestId('currentHp').value).toBe('20')
+})

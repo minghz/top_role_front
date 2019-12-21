@@ -14,6 +14,10 @@ class HealthPoints extends Component {
 
   handleChange(event) {
     var newHp = parseInt(event.target.value) || 0
+
+		if(newHp < 0) { newHp = 0 }
+		if(newHp > this.state.max) { newHp = this.state.max }
+
     event.target.value = newHp
 
     this.setState({current: newHp});
