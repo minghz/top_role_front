@@ -10,35 +10,46 @@ class HealthPoints extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
-  }
+	}
 
-  handleChange(event) {
-    var newHp = parseInt(event.target.value) || 0
+	componentDidUpdate(prevProps){
+		if(this.props.max !== prevProps.max){
+			var newMax = this.props.max
+      if(this.state.current > newMax) {
+        this.setState({ max: newMax, current: newMax })
+      } else {
+        this.setState({ max: newMax })
+      }
+		}
+	}
+
+	handleChange(event) {
+		var newHp = parseInt(event.target.value) || 0
 
 		if(newHp < 0) { newHp = 0 }
 		if(newHp > this.state.max) { newHp = this.state.max }
 
-    event.target.value = newHp
+		event.target.value = newHp
 
-    this.setState({current: newHp});
-    this.props.onHpChange(newHp);
-  }
+		this.setState({current: newHp});
+		this.props.onHpChange(newHp);
+	}
 
-  render() {
-    return(
-      <div className="health-points">
-        <strong>Health Points</strong>
-        <input className="current" data-testid="currentHp"
-          type="number"
-          value={this.state.current}
-          onChange={this.handleChange} />
-        <hr />
-        <div className="max" data-testid="maxHp">
-          {this.state.max}
-        </div>
-      </div>
-    )
-  }
+	render() {
+		return(
+			<div className="health-points">
+				<strong>Health Points</strong>
+				<input className="current" data-testid="currentHp"
+					type="number"
+					value={this.state.current}
+					onChange={this.handleChange} />
+						<hr />
+						<div className="max" data-testid="maxHp">
+							{this.state.max}
+						</div>
+			</div>
+		)
+	}
 }
 
 export default HealthPoints;

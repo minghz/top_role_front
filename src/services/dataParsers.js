@@ -15,6 +15,11 @@ export function savingProficienciesFromClass(className) {
   }
 }
 
+export function hitDiceNumberFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  return classObj.hitDice.faces;
+}
+
 export function racialAttributes(raceName) {
   var obj = RacesData.find(({ name }) => name === raceName)
 
