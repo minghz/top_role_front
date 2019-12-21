@@ -6,6 +6,10 @@ import ClassesData from '../data/classes.json';
 jest.mock('../data/classes.json', ()=>([
   {
     "name": "Barbarian",
+    "hitDice": {
+      "number": 1,
+      "faces": 12
+    },
     "proficiencies": {
       "savingThrow": ['str', 'dex', 'con']
     }
@@ -23,6 +27,10 @@ test('#savingProficienciesFromClass', () => {
   }
 
   expect(dataParsers.savingProficienciesFromClass('Barbarian')).toEqual(expectedSaveProficiencies);
+});
+
+test('#hitDiceNumberFromClass', () => {
+  expect(dataParsers.hitDiceNumberFromClass('Barbarian')).toBe(12);
 });
 
 jest.mock('../data/races.json', ()=>([
