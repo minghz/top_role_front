@@ -5,12 +5,25 @@ import HealthPoints from './HealthPoints';
 import TemporaryHealthPoints from './TemporaryHealthPoints';
 
 class StatsContainer extends Component {
+  constructor(props){
+    super(props);
+
+    this.handleHpChange = this.handleHpChange.bind(this);
+  }
+
+  handleHpChange(newHp) {
+    this.props.onHpChange(newHp)
+  }
+
   render() {
     return(
       <div className="stats-container">
         <ArmorClass dexMod={this.props.dexMod} armorBase={0} shieldMod={0}/>
         <TemporaryHealthPoints points={this.props.tmp} />
-        <HealthPoints max={this.props.max} current={this.props.current} />
+        <HealthPoints
+          max={this.props.max}
+          current={this.props.current}
+          onHpChange={this.handleHpChange}/>
       </div>
     )
   }

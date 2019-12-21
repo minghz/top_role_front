@@ -1,0 +1,20 @@
+.health-points {
+  margin: auto;
+  text-align: center;
+
+  border: 5px solid black;
+  padding: 0.5em;
+
+  width: 10em;
+}
+.current {
+  width: 50%;
+  padding-left: 0.5em;
+  margin-top: 0.3em;
+  text-align: center;
+  font-size: 2em;
+}
+.max {
+  font-size: 2em;
+  padding-bottom: 0.2em;
+}
