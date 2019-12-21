@@ -84,7 +84,7 @@ class Sheet extends Component {
   }
 
   handleAttributeChange = (type, value) => {
-    if(type == 'con') {
+    if(type === 'con') {
       var newHpMax = hpCalculator.averageHp(
         this.state.level,
         helpers.modifierFromAttribute(value + this.state.attributes_racial.con),

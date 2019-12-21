@@ -1,6 +1,6 @@
 export function averageHp(level, conMod, hitDice) {
   var startingHp = hitDice + conMod
-  if(level == 1){ return startingHp }
+  if(level === 1){ return startingHp }
 
   var maxDice = hitDice
   var rolls = level - 1
