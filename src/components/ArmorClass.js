@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import '../css/ArmorClass.css';
 
 class ArmorClass extends Component {
   render() {
     return(
       <div className="armor-class">
-        AC: {10 + this.props.dexMod}
+        <strong>Armor Class</strong>
+        <div className="armor-class-value">
+          {10 + this.props.dexMod}
+        </div>
       </div>
     )
   }

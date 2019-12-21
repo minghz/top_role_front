@@ -28,6 +28,8 @@ class Attribute extends Component {
 
   handleBaseChange(event) {
     var newBase = parseInt(event.target.value) || 0
+		if(newBase < 1) { newBase = 1 }
+
     event.target.value = newBase
 
     var newModifier = helpers.modifierFromAttribute(newBase + this.state.racial)

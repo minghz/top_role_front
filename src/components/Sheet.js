@@ -37,6 +37,9 @@ class Sheet extends Component {
       background: "Sailor",
       background_paragraphs: dataParsers.backgroundParagraphs("Sailor"),
       level: 5,
+      hpCurrent: HealthPointsData.current,
+      hpMax: HealthPointsData.max,
+      hpTmp: HealthPointsData.tmp,
       proficiencyBonus: helpers.proficiencyBonusFromLevel(5),
       savingProficiencies: dataParsers.savingProficienciesFromClass("Barbarian"),
       attributes: AttributesData,
@@ -98,6 +101,10 @@ class Sheet extends Component {
     this.setState({charName: charName});
   }
 
+  handleHpChange = (newHp) => {
+    this.setState({hpCurrent: newHp});
+  }
+
   render() {
     return (
       <div className="sheet">
@@ -139,9 +146,11 @@ class Sheet extends Component {
         <ProficienciesContainer />
         <StatsContainer
           dexMod={this.state.attributes_modifiers.dex}
-          max={HealthPointsData.max}
-          current={HealthPointsData.current}
-          tmp={HealthPointsData.tmp}/>
+          max={this.state.hpMax}
+          current={this.state.hpCurrent}
+          tmp={this.state.hpTmp}
+          onHpChange={this.handleHpChange}
+          />
         <CharContainer paragraphs={this.state.background_paragraphs}/>
         <AtacksContainer />
         <ItemsContainer />

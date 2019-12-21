@@ -14,7 +14,10 @@ class LevelsContainer extends Component {
   }
 
   handleChange(event){
-    var newLevel = event.target.value
+    var newLevel = parseInt(event.target.value)
+
+    if(newLevel < 1) { newLevel = 1}
+
     this.setState({
       value: newLevel,
       proficiencyBonus: helpers.proficiencyBonusFromLevel(newLevel)
@@ -26,11 +29,13 @@ class LevelsContainer extends Component {
     return(
       <div className="levels-container">
         <div className="level-label">Level</div>
-        <input className="level-value"
+        <input className="level-value" data-testid="levelValue"
           type="number"
           value={this.state.value}
           onChange={this.handleChange} />
-        <p>Proficiency Bonus: {this.props.proficiencyBonus}</p>
+        <p data-testid="profBonus">
+          Proficiency Bonus: {this.props.proficiencyBonus}
+        </p>
       </div>
     )
   }

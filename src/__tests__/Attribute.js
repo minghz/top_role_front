@@ -48,15 +48,25 @@ it('changing racial attr', () => {
   expect(getByTestId('attributeMod').textContent).toBe('0')
 })
 
-it('sets base to 0 if empty', () => {
+it('cannot be less than 1', () => {
+  const { getByTestId } =
+    render(
+      <Attribute type="str" base={10} racial={4} modifier={2} onChange={()=>{}} />
+    );
+  fireEvent.change(getByTestId('attributeBase'), { target: { value: '0' } })
+
+  expect(getByTestId('attributeBase').value).toBe('1')
+})
+
+it('sets base to 1 if empty', () => {
   const { getByTestId } =
     render(
       <Attribute type="str" base={10} racial={4} modifier={2} onChange={()=>{}} />
     );
   fireEvent.change(getByTestId('attributeBase'), { target: { value: '' } })
 
-  expect(getByTestId('attributeBase').value).toBe('0')
-  expect(getByTestId('attributeTotal').textContent).toBe('4')
+  expect(getByTestId('attributeBase').value).toBe('1')
+  expect(getByTestId('attributeTotal').textContent).toBe('5')
   expect(getByTestId('attributeMod').textContent).toBe('-3')
 })
 
