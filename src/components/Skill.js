@@ -22,6 +22,7 @@ class Skill extends Component {
     this.state = {
       name: props.name,
       bonus: props.bonus,
+      locked: props.locked,
       proficient: props.proficient,
       modifier: props.modifier,
       total: calculateTotalMod(props.proficient, props.bonus, props.modifier)
@@ -58,11 +59,22 @@ class Skill extends Component {
   }
 
   render() {
+    let checkbox;
+    const checkboxIsLocked = this.state.locked
+
+    if(checkboxIsLocked){
+      checkbox = <div className="skill-proficiency locked-checkbox">
+                   {markProficiency(this.state.proficient)}
+                 </div>
+    } else {
+      checkbox = <div className="skill-proficiency" onClick={() => this.changeTotal()}>
+                   {markProficiency(this.state.proficient)}
+                 </div>
+    }
+
     return(
       <div className="skill">
-        <div className="skill-proficiency" onClick={() => this.changeTotal()}>
-          {markProficiency(this.state.proficient)}
-        </div>
+        {checkbox}
         <div className="skill-name">{this.state.name}</div>
         <div className="skill-total">+{this.state.total}</div>
       </div>
