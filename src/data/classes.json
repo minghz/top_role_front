@@ -386,26 +386,26 @@
       ],
       "armor": [
         "light"
-        ],
-        "weapons": [
-          "simple"
-        ],
-        "skills": [
-          {
-            "choose": {
-              "from": [
-                "arcana",
-                "deception",
-                "history",
-                "intimidation",
-                "investigation",
-                "nature",
-                "religion"
-              ],
-              "count": 2
-            }
+      ],
+      "weapons": [
+        "simple"
+      ],
+      "skills": [
+        {
+          "choose": {
+            "from": [
+              "arcana",
+              "deception",
+              "history",
+              "intimidation",
+              "investigation",
+              "nature",
+              "religion"
+            ],
+            "count": 2
           }
-        ]
+        }
+      ]
     }
   },
   {

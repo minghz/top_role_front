@@ -24,7 +24,7 @@ import ItemsContainer from './ItemsContainer';
 import ProficienciesData from '../data/proficiencies.json';
 import RacesData from '../data/races.json';
 import ClassesData from '../data/classes.json';
-import BackgroundsData from '../data/backgrounds.json';
+import BackgroundsInfoData from '../data/backgrounds-info.json';
 
 class Sheet extends Component {
   constructor(props){
@@ -111,12 +111,18 @@ class Sheet extends Component {
 
   handleClassChange = (className) => {
     var newSavingProficiencies = dataParsers.savingProficienciesFromClass(className)
+    var newHpMax = hpCalculator.averageHp(
+      this.state.level,
+      this.state.attributeModifiers.con,
+      dataParsers.hitDiceNumberFromClass(className)
+    )
+
     this.setState({
-      savingProficiencies: newSavingProficiencies
+      class: className,
+      savingProficiencies: newSavingProficiencies,
+      hpMax: newHpMax
     })
     //TODO Choose two skills from list
-    //TODO armor/weapon/instrument/tools
-    //TODO HitDice change
   }
 
   handleRaceChange = (raceName) => {
@@ -133,6 +139,7 @@ class Sheet extends Component {
       background: backgroundName,
       background_paragraphs: dataParsers.backgroundParagraphs(backgroundName)
     });
+    //TODO: Auto-select skill proficiencis
   }
 
   handleNameChange = (charName) => {
@@ -160,7 +167,7 @@ class Sheet extends Component {
             onRaceChange={this.handleRaceChange} />
           <CharBackground
             value={this.state.background}
-            backgrounds={helpers.listNames(BackgroundsData)}
+            backgrounds={helpers.listNames(BackgroundsInfoData)}
             onBackgroundChange={this.handleBackgroundChange} />
         </div>
         <LevelsContainer
@@ -181,15 +188,15 @@ class Sheet extends Component {
            proficiencies={ProficienciesData}
            bonus={this.state.proficiencyBonus}
            modifiers={this.state.attributeModifiers}/>
-         <ProficienciesContainer />
          <StatsContainer
            dexMod={this.state.attributeModifiers.dex}
            max={this.state.hpMax}
            current={this.state.hpCurrent}
            tmp={this.state.hpTmp}
            onHpChange={this.handleHpChange}/>
-         <CharContainer paragraphs={this.state.background_paragraphs}/>
+         <ProficienciesContainer class={this.state.class}/>
          <AtacksContainer />
+         <CharContainer paragraphs={this.state.background_paragraphs}/>
          <ItemsContainer />
       </div>
     );

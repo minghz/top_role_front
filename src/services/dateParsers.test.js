@@ -1,6 +1,6 @@
 import * as dataParsers from './dataParsers'
 import RacesData from '../data/races.json';
-import BackgroundsData from '../data/backgrounds.json';
+import BackgroundsInfoData from '../data/backgrounds-info.json';
 import ClassesData from '../data/classes.json';
 
 jest.mock('../data/classes.json', ()=>([
@@ -11,8 +11,15 @@ jest.mock('../data/classes.json', ()=>([
       "faces": 12
     },
     "proficiencies": {
-      "savingThrow": ['str', 'dex', 'con']
+      "savingThrow": ['str', 'dex', 'con'],
+      "armor": ["light", "medium"],
+      "weapons": ["simple", "martial"],
+      "tools": ['flute', 'Herbalism kit']
     }
+  },
+  {
+    "name": "Dummy",
+    "proficiencies": {}
   }
 ]))
 
@@ -31,6 +38,21 @@ test('#savingProficienciesFromClass', () => {
 
 test('#hitDiceNumberFromClass', () => {
   expect(dataParsers.hitDiceNumberFromClass('Barbarian')).toBe(12);
+});
+
+test('#armorProficienciesFromClass', () => {
+  expect(dataParsers.armorProficienciesFromClass('Barbarian')).toBe("light, medium");
+  expect(dataParsers.armorProficienciesFromClass('Dummy')).toBe("none");
+});
+
+test('#weaponProficienciesFromClass', () => {
+  expect(dataParsers.weaponProficienciesFromClass('Barbarian')).toBe("simple, martial");
+  expect(dataParsers.weaponProficienciesFromClass('Dummy')).toBe("none");
+});
+
+test('#toolProficienciesFromClass', () => {
+  expect(dataParsers.toolProficienciesFromClass('Barbarian')).toBe("flute, Herbalism kit");
+  expect(dataParsers.toolProficienciesFromClass('Dummy')).toBe("none");
 });
 
 jest.mock('../data/races.json', ()=>([
@@ -56,7 +78,7 @@ test('#racialAttributes', () => {
   expect(dataParsers.racialAttributes('Orc')).toEqual(expectedRacialAttributes);
 });
 
-jest.mock('../data/backgrounds.json', ()=>([
+jest.mock('../data/backgrounds-info.json', ()=>([
   {
     "name": "Developer",
     "entries": [

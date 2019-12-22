@@ -3,6 +3,7 @@ import Skill from './Skill';
 import '../css/SkillsContainer.css'
 
 class SkillsContainer extends Component {
+  // TODO allow choose from list depending on class
   render() {
     return(
       <div className="skills-container">

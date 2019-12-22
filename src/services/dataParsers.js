@@ -1,5 +1,5 @@
 import RacesData from '../data/races.json';
-import BackgroundsData from '../data/backgrounds.json';
+import BackgroundsInfoData from '../data/backgrounds-info.json';
 import ClassesData from '../data/classes.json';
 
 export function savingProficienciesFromClass(className) {
@@ -20,6 +20,24 @@ export function hitDiceNumberFromClass(className) {
   return classObj.hitDice.faces;
 }
 
+export function armorProficienciesFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  var armorProf = classObj.proficiencies.armor
+  return armorProf === undefined ? 'none' : armorProf.join(', ');
+}
+
+export function weaponProficienciesFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  var weaponProf = classObj.proficiencies.weapons
+  return weaponProf === undefined ? 'none' : weaponProf.join(', ');
+}
+
+export function toolProficienciesFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  var toolProf = classObj.proficiencies.tools
+  return toolProf === undefined ? 'none' : toolProf.join(', ');
+}
+
 export function racialAttributes(raceName) {
   var obj = RacesData.find(({ name }) => name === raceName)
 
@@ -34,6 +52,6 @@ export function racialAttributes(raceName) {
 }
 
 export function backgroundParagraphs(backgroundName) {
-  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  var background = BackgroundsInfoData.find(({name}) => name === backgroundName)
   return background.entries
 }
