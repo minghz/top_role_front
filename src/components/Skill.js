@@ -66,6 +66,7 @@ class Skill extends Component {
         <div className="skill-name">{this.state.name}</div>
         <div className="skill-total">+{this.state.total}</div>
       </div>
+      //TODO Be able to mark non-editable due to Background
     )
   }
 }

@@ -7,7 +7,8 @@
 
 .saving-throw-proficiency {
   display: inline-block;
-  border: 3px solid black;
+  border: 3px solid darkgray;
+  color: darkgray;
   width: 1.2em;
   margin: 0.2em;
   text-align: center;
