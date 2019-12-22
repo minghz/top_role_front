@@ -1,6 +1,6 @@
 import * as dataParsers from './dataParsers'
 import RacesData from '../data/races.json';
-import BackgroundsData from '../data/backgrounds.json';
+import BackgroundsInfoData from '../data/backgrounds-info.json';
 import ClassesData from '../data/classes.json';
 
 jest.mock('../data/classes.json', ()=>([
@@ -78,7 +78,7 @@ test('#racialAttributes', () => {
   expect(dataParsers.racialAttributes('Orc')).toEqual(expectedRacialAttributes);
 });
 
-jest.mock('../data/backgrounds.json', ()=>([
+jest.mock('../data/backgrounds-info.json', ()=>([
   {
     "name": "Developer",
     "entries": [

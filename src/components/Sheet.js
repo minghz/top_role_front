@@ -24,7 +24,7 @@ import ItemsContainer from './ItemsContainer';
 import ProficienciesData from '../data/proficiencies.json';
 import RacesData from '../data/races.json';
 import ClassesData from '../data/classes.json';
-import BackgroundsData from '../data/backgrounds.json';
+import BackgroundsInfoData from '../data/backgrounds-info.json';
 
 class Sheet extends Component {
   constructor(props){
@@ -167,7 +167,7 @@ class Sheet extends Component {
             onRaceChange={this.handleRaceChange} />
           <CharBackground
             value={this.state.background}
-            backgrounds={helpers.listNames(BackgroundsData)}
+            backgrounds={helpers.listNames(BackgroundsInfoData)}
             onBackgroundChange={this.handleBackgroundChange} />
         </div>
         <LevelsContainer

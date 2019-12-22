@@ -1,5 +1,5 @@
 import RacesData from '../data/races.json';
-import BackgroundsData from '../data/backgrounds.json';
+import BackgroundsInfoData from '../data/backgrounds-info.json';
 import ClassesData from '../data/classes.json';
 
 export function savingProficienciesFromClass(className) {
@@ -52,6 +52,6 @@ export function racialAttributes(raceName) {
 }
 
 export function backgroundParagraphs(backgroundName) {
-  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  var background = BackgroundsInfoData.find(({name}) => name === backgroundName)
   return background.entries
 }
