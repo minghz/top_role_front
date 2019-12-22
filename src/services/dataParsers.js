@@ -20,6 +20,24 @@ export function hitDiceNumberFromClass(className) {
   return classObj.hitDice.faces;
 }
 
+export function armorProficienciesFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  var armorProf = classObj.proficiencies.armor
+  return armorProf === undefined ? 'none' : armorProf.join(', ');
+}
+
+export function weaponProficienciesFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  var weaponProf = classObj.proficiencies.weapons
+  return weaponProf === undefined ? 'none' : weaponProf.join(', ');
+}
+
+export function toolProficienciesFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  var toolProf = classObj.proficiencies.tools
+  return toolProf === undefined ? 'none' : toolProf.join(', ');
+}
+
 export function racialAttributes(raceName) {
   var obj = RacesData.find(({ name }) => name === raceName)
 
