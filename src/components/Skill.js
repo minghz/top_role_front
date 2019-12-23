@@ -20,10 +20,7 @@ class Skill extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bonus: props.bonus,
-      locked: props.locked,
       proficient: props.proficient,
-      modifier: props.modifier,
       total: totalSkillBonus(props.proficient, props.bonus, props.modifier)
     };
   }
@@ -31,23 +28,20 @@ class Skill extends Component {
   componentDidUpdate(prevProps) {
     if(this.props.modifier !== prevProps.modifier){
       this.setState({
-        modifier: this.props.modifier,
-        total: totalSkillBonus(this.state.proficient, this.state.bonus, this.props.modifier)
+        total: totalSkillBonus(this.state.proficient, this.props.bonus, this.props.modifier)
       });
     }
 
     if(this.props.bonus !== prevProps.bonus){
       this.setState({
-        bonus: this.props.bonus,
-        total: totalSkillBonus(this.state.proficient, this.props.bonus, this.state.modifier)
+        total: totalSkillBonus(this.state.proficient, this.props.bonus, this.props.modifier)
       });
     }
 
-    if(this.props.locked !== prevProps.locked){
+    if(this.props.proficient !== prevProps.proficient){
       this.setState({
-        locked: this.props.locked,
         proficient: this.props.proficient,
-        total: totalSkillBonus(this.props.proficient, this.state.bonus, this.state.modifier)
+        total: totalSkillBonus(this.props.proficient, this.props.bonus, this.props.modifier)
       });
     }
   }
@@ -56,18 +50,18 @@ class Skill extends Component {
     if(this.state.proficient)
       this.setState({
         proficient: false,
-        total: totalSkillBonus(false, this.state.bonus, this.state.modifier)
+        total: totalSkillBonus(false, this.props.bonus, this.props.modifier)
       });
     else
       this.setState({
         proficient: true,
-        total: totalSkillBonus(true, this.state.bonus, this.state.modifier)
+        total: totalSkillBonus(true, this.props.bonus, this.props.modifier)
       });
   }
 
   render() {
     let checkbox;
-    const checkboxIsLocked = this.state.locked
+    const checkboxIsLocked = this.props.locked
 
     if(checkboxIsLocked){
       checkbox = <div className="skill-proficiency locked-checkbox">
