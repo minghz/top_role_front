@@ -18,6 +18,27 @@ test('#proficiencyBonusFromLevel', () => {
   expect(helpers.proficiencyBonusFromLevel(17)).toBe(6);
 });
 
+test('#attributeOfSkill', () => {
+  expect(helpers.attributeOfSkill('athletics')).toBe('str');
+  expect(helpers.attributeOfSkill('acrobatics')).toBe('dex');
+  expect(helpers.attributeOfSkill('sleightOfHand')).toBe('dex');
+  expect(helpers.attributeOfSkill('stealth')).toBe('dex');
+  expect(helpers.attributeOfSkill('arcana')).toBe('int');
+  expect(helpers.attributeOfSkill('history')).toBe('int');
+  expect(helpers.attributeOfSkill('investigation')).toBe('int');
+  expect(helpers.attributeOfSkill('nature')).toBe('int');
+  expect(helpers.attributeOfSkill('religion')).toBe('int');
+  expect(helpers.attributeOfSkill('animalHandling')).toBe('wis');
+  expect(helpers.attributeOfSkill('insight')).toBe('wis');
+  expect(helpers.attributeOfSkill('medicine')).toBe('wis');
+  expect(helpers.attributeOfSkill('perception')).toBe('wis');
+  expect(helpers.attributeOfSkill('survival')).toBe('wis');
+  expect(helpers.attributeOfSkill('deception')).toBe('cha');
+  expect(helpers.attributeOfSkill('intimidation')).toBe('cha');
+  expect(helpers.attributeOfSkill('performance')).toBe('cha');
+  expect(helpers.attributeOfSkill('persuasion')).toBe('cha');
+})
+
 test('#modifierFromAttribute', () => {
   expect(helpers.modifierFromAttribute(7)).toBe(-2);
   expect(helpers.modifierFromAttribute(8)).toBe(-1);

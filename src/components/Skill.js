@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Skill.css'
 
-function calculateTotalMod(proficient, bonus, modifier) {
+function totalSkillBonus(proficient, bonus, modifier) {
   if(proficient){
     return bonus + modifier;
   } else {
@@ -20,12 +20,11 @@ class Skill extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: props.name,
       bonus: props.bonus,
       locked: props.locked,
       proficient: props.proficient,
       modifier: props.modifier,
-      total: calculateTotalMod(props.proficient, props.bonus, props.modifier)
+      total: totalSkillBonus(props.proficient, props.bonus, props.modifier)
     };
   }
 
@@ -33,14 +32,22 @@ class Skill extends Component {
     if(this.props.modifier !== prevProps.modifier){
       this.setState({
         modifier: this.props.modifier,
-        total: calculateTotalMod(this.state.proficient, this.state.bonus, this.props.modifier)
+        total: totalSkillBonus(this.state.proficient, this.state.bonus, this.props.modifier)
       });
     }
 
     if(this.props.bonus !== prevProps.bonus){
       this.setState({
         bonus: this.props.bonus,
-        total: calculateTotalMod(this.state.proficient, this.props.bonus, this.state.modifier)
+        total: totalSkillBonus(this.state.proficient, this.props.bonus, this.state.modifier)
+      });
+    }
+
+    if(this.props.locked !== prevProps.locked){
+      this.setState({
+        locked: this.props.locked,
+        proficient: this.props.proficient,
+        total: totalSkillBonus(this.props.proficient, this.state.bonus, this.state.modifier)
       });
     }
   }
@@ -49,12 +56,12 @@ class Skill extends Component {
     if(this.state.proficient)
       this.setState({
         proficient: false,
-        total: calculateTotalMod(false, this.state.bonus, this.state.modifier)
+        total: totalSkillBonus(false, this.state.bonus, this.state.modifier)
       });
     else
       this.setState({
         proficient: true,
-        total: calculateTotalMod(true, this.state.bonus, this.state.modifier)
+        total: totalSkillBonus(true, this.state.bonus, this.state.modifier)
       });
   }
 
@@ -75,10 +82,9 @@ class Skill extends Component {
     return(
       <div className="skill">
         {checkbox}
-        <div className="skill-name">{this.state.name}</div>
+        <div className="skill-name">{this.props.name}</div>
         <div className="skill-total">+{this.state.total}</div>
       </div>
-      //TODO Be able to mark non-editable due to Background
     )
   }
 }

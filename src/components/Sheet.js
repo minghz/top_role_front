@@ -139,7 +139,6 @@ class Sheet extends Component {
       background: backgroundName,
       background_paragraphs: dataParsers.backgroundParagraphs(backgroundName)
     });
-    //TODO: Auto-select skill proficiencis
   }
 
   handleNameChange = (charName) => {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import * as dataParsers from '../services/dataParsers'
-import * as formatters from '../services/formatters'
+import { attributeOfSkill, mapOfSkillAttribute } from '../services/helpers'
+import { skillProfsFromBackground } from '../services/dataParsers'
+import { humanizeCamelCase } from '../services/formatters'
+
 import Skill from './Skill';
 import '../css/SkillsContainer.css'
 
@@ -9,44 +11,28 @@ class SkillsContainer extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      backgroundProfs: dataParsers.skillProfsFromBackground(props.background),
-      skillsAndAttributes: {
-        athletics:      'str',
-        acrobatics:     'dex',
-        sleightOfHand:  'dex',
-        stealth:        'dex',
-        arcana:         'int',
-        history:        'int',
-        investigation:  'int',
-        nature:         'int',
-        religion:       'int',
-        animalHandling: 'wis',
-        insight:        'wis',
-        medicine:       'wis',
-        perception:     'wis',
-        survival:       'wis',
-        deception:      'cha',
-        intimidation:   'cha',
-        performance:    'cha',
-        persuasion:     'cha'
-      }
-    }
   }
 
+  skillIsFromBackground(skill) {
+    const background = this.props.background
+    const skillsFromBackground = skillProfsFromBackground(background)
+
+    return skillsFromBackground.includes(skill)
+  }
+  
   render() {
     return(
       <div className="skills-container">
         <strong>Skills</strong>
         {
-          Object.entries(this.state.skillsAndAttributes).map((entry) => {
+          Object.entries(mapOfSkillAttribute()).map((entry) => {
             const skill = entry[0]
             const attribute = entry[1]
-            const isFromBackground = this.state.backgroundProfs.includes(skill)
+            const isFromBackground = this.skillIsFromBackground(skill)
 
             return(
-              <Skill key={skill} name={formatters.humanizeCamelCase(skill)}
-                modifier={this.props.modifiers[attribute]}
+              <Skill key={skill} name={humanizeCamelCase(skill)}
+                modifier={this.props.modifiers[attributeOfSkill(skill)]}
                 proficient={isFromBackground}
                 locked={isFromBackground}
                 bonus={this.props.bonus}/>
