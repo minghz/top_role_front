@@ -66,3 +66,9 @@ export function languagesFromBackground(backgroundName) {
   var background = BackgroundsData.find(({name}) => name === backgroundName)
   return background.proficiencies.languages[0] || 'none'
 }
+
+export function toolProfsFromBackground(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  let toolProf = background.proficiencies.tools
+  return toolProf.length > 0 ? toolProf.join(', ') : 'none'
+}
