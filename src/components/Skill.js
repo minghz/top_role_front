@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Skill.css'
 
-function calculateTotalMod(proficient, bonus, modifier) {
+function totalSkillBonus(proficient, bonus, modifier) {
   if(proficient){
     return bonus + modifier;
   } else {
@@ -20,26 +20,28 @@ class Skill extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: props.name,
-      bonus: props.bonus,
       proficient: props.proficient,
-      modifier: props.modifier,
-      total: calculateTotalMod(props.proficient, props.bonus, props.modifier)
+      total: totalSkillBonus(props.proficient, props.bonus, props.modifier)
     };
   }
 
   componentDidUpdate(prevProps) {
     if(this.props.modifier !== prevProps.modifier){
       this.setState({
-        modifier: this.props.modifier,
-        total: calculateTotalMod(this.state.proficient, this.state.bonus, this.props.modifier)
+        total: totalSkillBonus(this.state.proficient, this.props.bonus, this.props.modifier)
       });
     }
 
     if(this.props.bonus !== prevProps.bonus){
       this.setState({
-        bonus: this.props.bonus,
-        total: calculateTotalMod(this.state.proficient, this.props.bonus, this.state.modifier)
+        total: totalSkillBonus(this.state.proficient, this.props.bonus, this.props.modifier)
+      });
+    }
+
+    if(this.props.proficient !== prevProps.proficient){
+      this.setState({
+        proficient: this.props.proficient,
+        total: totalSkillBonus(this.props.proficient, this.props.bonus, this.props.modifier)
       });
     }
   }
@@ -48,25 +50,35 @@ class Skill extends Component {
     if(this.state.proficient)
       this.setState({
         proficient: false,
-        total: calculateTotalMod(false, this.state.bonus, this.state.modifier)
+        total: totalSkillBonus(false, this.props.bonus, this.props.modifier)
       });
     else
       this.setState({
         proficient: true,
-        total: calculateTotalMod(true, this.state.bonus, this.state.modifier)
+        total: totalSkillBonus(true, this.props.bonus, this.props.modifier)
       });
   }
 
   render() {
+    let checkbox;
+    const checkboxIsLocked = this.props.locked
+
+    if(checkboxIsLocked){
+      checkbox = <div className="skill-proficiency locked-checkbox">
+                   {markProficiency(this.state.proficient)}
+                 </div>
+    } else {
+      checkbox = <div className="skill-proficiency" onClick={() => this.changeTotal()}>
+                   {markProficiency(this.state.proficient)}
+                 </div>
+    }
+
     return(
       <div className="skill">
-        <div className="skill-proficiency" onClick={() => this.changeTotal()}>
-          {markProficiency(this.state.proficient)}
-        </div>
-        <div className="skill-name">{this.state.name}</div>
+        {checkbox}
+        <div className="skill-name">{this.props.name}</div>
         <div className="skill-total">+{this.state.total}</div>
       </div>
-      //TODO Be able to mark non-editable due to Background
     )
   }
 }

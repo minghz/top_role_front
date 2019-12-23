@@ -1,6 +1,7 @@
 import * as dataParsers from './dataParsers'
 import RacesData from '../data/races.json';
 import BackgroundsInfoData from '../data/backgrounds-info.json';
+import BackgroundsData from '../data/backgrounds-full.json';
 import ClassesData from '../data/classes.json';
 
 jest.mock('../data/classes.json', ()=>([
@@ -87,6 +88,7 @@ jest.mock('../data/backgrounds-info.json', ()=>([
     ]
   }
 ]));
+
 test('#backgroundParagraphs', () => {
   var expectedBackgroundEntries = [
     "You sit in front of the computer all day",
@@ -94,4 +96,40 @@ test('#backgroundParagraphs', () => {
   ]
 
   expect(dataParsers.backgroundParagraphs('Developer')).toEqual(expectedBackgroundEntries);
+});
+
+jest.mock('../data/backgrounds-full.json', ()=>([
+  {
+    "name": "Developer",
+    "proficiencies": {
+      "skills": [
+        'insight',
+        'religion'
+      ],
+      "languages": ['2 of your choice'],
+      "tools": ['keyboard', 'mouse']
+    }
+  },
+  {
+    "name": "Artist",
+    "proficiencies": {
+      "languages": [],
+      "tools": []
+    }
+  }
+]));
+
+test('#skillProfsFromBackground', () => {
+  var expectedProfs = ['insight', 'religion']
+  expect(dataParsers.skillProfsFromBackground('Developer')).toEqual(expectedProfs);
+});
+
+test('#languagesFromBackground', () => {
+  expect(dataParsers.languagesFromBackground('Developer')).toEqual('2 of your choice');
+  expect(dataParsers.languagesFromBackground('Artist')).toEqual('none');
+});
+
+test('#toolProfsFromBackground', () => {
+  expect(dataParsers.toolProfsFromBackground('Developer')).toEqual('keyboard, mouse');
+  expect(dataParsers.languagesFromBackground('Artist')).toEqual('none');
 });

@@ -31,6 +31,33 @@ export function proficiencyBonusFromLevel(level) {
   }
 }
 
+export function mapOfSkillAttribute() {
+  return {
+    athletics:      'str',
+    acrobatics:     'dex',
+    sleightOfHand:  'dex',
+    stealth:        'dex',
+    arcana:         'int',
+    history:        'int',
+    investigation:  'int',
+    nature:         'int',
+    religion:       'int',
+    animalHandling: 'wis',
+    insight:        'wis',
+    medicine:       'wis',
+    perception:     'wis',
+    survival:       'wis',
+    deception:      'cha',
+    intimidation:   'cha',
+    performance:    'cha',
+    persuasion:     'cha'
+  }
+}
+
+export function attributeOfSkill(skill) {
+  return mapOfSkillAttribute()[skill]
+}
+
 export function modifierFromAttribute(attribute) {
   return Math.floor((attribute - 10) / 2);
 }

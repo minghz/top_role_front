@@ -3,6 +3,16 @@ import * as dataParsers from '../services/dataParsers';
 import '../css/ProficienciesContainer.css';
 
 class ProficienciesContainer extends Component {
+
+  toolProficiencies() {
+    let toolFromClass = dataParsers.toolProficienciesFromClass(this.props.class)
+    let toolFromBackground = dataParsers.toolProfsFromBackground(this.props.background)
+
+    let sanitizedTools = [toolFromClass, toolFromBackground].filter(element => element !== 'none')
+
+    return sanitizedTools.length < 1 ? 'none' : sanitizedTools.join(', ');
+  }
+
   render() {
     return(
       <div className="proficiencies-container">
@@ -16,7 +26,11 @@ class ProficienciesContainer extends Component {
         </div>
         <div className="tool-proficiencies">
           <strong>Tool Proficiencies: </strong>
-          {dataParsers.toolProficienciesFromClass(this.props.class)}
+          {this.toolProficiencies(this.props.class)}
+        </div>
+        <div className="language-proficiencies">
+          <strong>Languages: </strong>
+          {dataParsers.languagesFromBackground(this.props.background)}
         </div>
       </div>
     )

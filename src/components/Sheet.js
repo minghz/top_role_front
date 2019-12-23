@@ -21,10 +21,10 @@ import CharContainer from './CharContainer';
 import AtacksContainer from './AtacksContainer';
 import ItemsContainer from './ItemsContainer';
 
-import ProficienciesData from '../data/proficiencies.json';
 import RacesData from '../data/races.json';
 import ClassesData from '../data/classes.json';
 import BackgroundsInfoData from '../data/backgrounds-info.json';
+import BackgroundsData from '../data/backgrounds-full.json';
 
 class Sheet extends Component {
   constructor(props){
@@ -139,7 +139,6 @@ class Sheet extends Component {
       background: backgroundName,
       background_paragraphs: dataParsers.backgroundParagraphs(backgroundName)
     });
-    //TODO: Auto-select skill proficiencis
   }
 
   handleNameChange = (charName) => {
@@ -167,7 +166,7 @@ class Sheet extends Component {
             onRaceChange={this.handleRaceChange} />
           <CharBackground
             value={this.state.background}
-            backgrounds={helpers.listNames(BackgroundsInfoData)}
+            backgrounds={helpers.listNames(BackgroundsData)}
             onBackgroundChange={this.handleBackgroundChange} />
         </div>
         <LevelsContainer
@@ -185,7 +184,8 @@ class Sheet extends Component {
            bonus={this.state.proficiencyBonus}
            savingProficiencies={this.state.savingProficiencies} />
          <SkillsContainer
-           proficiencies={ProficienciesData}
+           proficiencies={{}}
+           background={this.state.background}
            bonus={this.state.proficiencyBonus}
            modifiers={this.state.attributeModifiers}/>
          <StatsContainer
@@ -194,7 +194,7 @@ class Sheet extends Component {
            current={this.state.hpCurrent}
            tmp={this.state.hpTmp}
            onHpChange={this.handleHpChange}/>
-         <ProficienciesContainer class={this.state.class}/>
+         <ProficienciesContainer class={this.state.class} background={this.state.background}/>
          <AtacksContainer />
          <CharContainer paragraphs={this.state.background_paragraphs}/>
          <ItemsContainer />

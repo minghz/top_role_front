@@ -1,5 +1,6 @@
 import RacesData from '../data/races.json';
 import BackgroundsInfoData from '../data/backgrounds-info.json';
+import BackgroundsData from '../data/backgrounds-full.json';
 import ClassesData from '../data/classes.json';
 
 export function savingProficienciesFromClass(className) {
@@ -54,4 +55,20 @@ export function racialAttributes(raceName) {
 export function backgroundParagraphs(backgroundName) {
   var background = BackgroundsInfoData.find(({name}) => name === backgroundName)
   return background.entries
+}
+
+export function skillProfsFromBackground(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  return background.proficiencies.skills
+}
+
+export function languagesFromBackground(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  return background.proficiencies.languages[0] || 'none'
+}
+
+export function toolProfsFromBackground(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  let toolProf = background.proficiencies.tools
+  return toolProf.length > 0 ? toolProf.join(', ') : 'none'
 }
