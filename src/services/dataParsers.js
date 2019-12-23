@@ -72,3 +72,8 @@ export function toolProfsFromBackground(backgroundName) {
   let toolProf = background.proficiencies.tools
   return toolProf.length > 0 ? toolProf.join(', ') : 'none'
 }
+
+export function featureFromBackground(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  return background.feature
+}

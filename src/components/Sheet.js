@@ -45,7 +45,6 @@ class Sheet extends Component {
     }
     var attributeModifiers = helpers.modifiers(attributesBase, dataParsers.racialAttributes("Dragonborn"))
     var hpMax = hpCalculator.averageHp(level, attributeModifiers.con, dataParsers.hitDiceNumberFromClass('Barbarian'))
-    var backgroundParagraphs = dataParsers.backgroundParagraphs(charBackground)
     var proficiencyBonus = helpers.proficiencyBonusFromLevel(level)
     var savingProficiencies = dataParsers.savingProficienciesFromClass(charClass)
     var attributesRacial = dataParsers.racialAttributes(charRace)
@@ -55,7 +54,6 @@ class Sheet extends Component {
       race: charRace,
       class: charClass,
       background: charBackground,
-      background_paragraphs: backgroundParagraphs,
       level: level,
       hpCurrent: 6,
       hpMax: hpMax,
@@ -136,8 +134,7 @@ class Sheet extends Component {
 
   handleBackgroundChange = (backgroundName) => {
     this.setState({
-      background: backgroundName,
-      background_paragraphs: dataParsers.backgroundParagraphs(backgroundName)
+      background: backgroundName
     });
   }
 
@@ -196,7 +193,7 @@ class Sheet extends Component {
            onHpChange={this.handleHpChange}/>
          <ProficienciesContainer class={this.state.class} background={this.state.background}/>
          <AtacksContainer />
-         <CharContainer paragraphs={this.state.background_paragraphs}/>
+         <CharContainer background={this.state.background}/>
          <ItemsContainer />
       </div>
     );

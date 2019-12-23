@@ -115,6 +115,12 @@ jest.mock('../data/backgrounds-full.json', ()=>([
     "proficiencies": {
       "languages": [],
       "tools": []
+    },
+    "feature": {
+      "name": "Feature: Angst",
+      "description": [
+        "You can channel artistic energy via angst"
+      ]
     }
   }
 ]));
@@ -132,4 +138,12 @@ test('#languagesFromBackground', () => {
 test('#toolProfsFromBackground', () => {
   expect(dataParsers.toolProfsFromBackground('Developer')).toEqual('keyboard, mouse');
   expect(dataParsers.languagesFromBackground('Artist')).toEqual('none');
+});
+
+test('#featureFromBackground', () => {
+  let expectedFeature = {
+    name: 'Feature: Angst',
+    description: ["You can channel artistic energy via angst"]
+  }
+  expect(dataParsers.featureFromBackground('Artist')).toEqual(expectedFeature);
 });
