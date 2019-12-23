@@ -18,6 +18,10 @@ class ProficienciesContainer extends Component {
           <strong>Tool Proficiencies: </strong>
           {dataParsers.toolProficienciesFromClass(this.props.class)}
         </div>
+        <div className="language-proficiencies">
+          <strong>Languages: </strong>
+          {dataParsers.languagesFromBackground(this.props.background)}
+        </div>
       </div>
     )
   }

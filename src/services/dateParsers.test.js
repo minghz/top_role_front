@@ -105,7 +105,14 @@ jest.mock('../data/backgrounds-full.json', ()=>([
       "skills": [
         'insight',
         'religion'
-      ]
+      ],
+      "languages": ['2 of your choice']
+    }
+  },
+  {
+    "name": "Artist",
+    "proficiencies": {
+      "languages": []
     }
   }
 ]));
@@ -113,4 +120,9 @@ jest.mock('../data/backgrounds-full.json', ()=>([
 test('#skillProfsFromBackground', () => {
   var expectedProfs = ['insight', 'religion']
   expect(dataParsers.skillProfsFromBackground('Developer')).toEqual(expectedProfs);
+});
+
+test('#languagesFromBackground', () => {
+  expect(dataParsers.languagesFromBackground('Developer')).toEqual('2 of your choice');
+  expect(dataParsers.languagesFromBackground('Artist')).toEqual('none');
 });

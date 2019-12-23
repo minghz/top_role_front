@@ -194,7 +194,7 @@ class Sheet extends Component {
            current={this.state.hpCurrent}
            tmp={this.state.hpTmp}
            onHpChange={this.handleHpChange}/>
-         <ProficienciesContainer class={this.state.class}/>
+         <ProficienciesContainer class={this.state.class} background={this.state.background}/>
          <AtacksContainer />
          <CharContainer paragraphs={this.state.background_paragraphs}/>
          <ItemsContainer />
