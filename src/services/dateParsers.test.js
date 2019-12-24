@@ -135,6 +135,27 @@ jest.mock('../data/backgrounds-full.json', ()=>([
         "3": "Grey tonge",
         "4": "Don't brush teeth"
       }
+    },
+    "suggested_characteristics": {
+      "description": "Nobles are born and raised to a very different lifestyle than most people ever experience, and their personalities reflect that upbringing. A noble title comes with a plethora of bonds—responsibilities to family, to other nobles (including the sovereign), to the people entrusted to the family's care, or even to the title itself. But this responsibility is often a good way to undermine a noble.",
+      "characteristics": [
+        {
+          "label": "Personality Trait",
+          "rollDice": {
+            "faces": "8"
+          },
+          "rolls": {
+            "1": "My eloquent flattery makes everyone I talk to feel like the most wonderful and important person in the world.",
+            "2": "The common folk love me for my kindness and generosity.",
+            "3": "No one could doubt by looking at my regal bearing that I am a cut above the unwashed masses.",
+            "4": "I take great pains to always look my best and follow the latest fashions.",
+            "5": "I don't like to get my hands dirty, and I won't be caught dead in unsuitable accommodations.",
+            "6": "Despite my noble birth, I do not place myself above other folk. We all have the same blood.",
+            "7": "My favor, once lost, is lost forever.",
+            "8": "If you do me an injury, I will crush you, ruin your name, and salt your fields."
+          }
+        }
+      ]
     }
   }
 ]));
@@ -181,4 +202,29 @@ test('#specialtyFromBackground', () => {
 
 test('#specialtyFromBackground empty', () => {
   expect(dataParsers.specialtyFromBackground('Developer')).toEqual({});
+});
+
+test('#characteristicFromBackground', () => {
+  let expectedCharacteristic = {
+    "description": "Nobles are born and raised to a very different lifestyle than most people ever experience, and their personalities reflect that upbringing. A noble title comes with a plethora of bonds—responsibilities to family, to other nobles (including the sovereign), to the people entrusted to the family's care, or even to the title itself. But this responsibility is often a good way to undermine a noble.",
+    "characteristics": [
+      {
+        "label": "Personality Trait",
+        "rollDice": {
+          "faces": "8"
+        },
+        "rolls": {
+          "1": "My eloquent flattery makes everyone I talk to feel like the most wonderful and important person in the world.",
+          "2": "The common folk love me for my kindness and generosity.",
+          "3": "No one could doubt by looking at my regal bearing that I am a cut above the unwashed masses.",
+          "4": "I take great pains to always look my best and follow the latest fashions.",
+          "5": "I don't like to get my hands dirty, and I won't be caught dead in unsuitable accommodations.",
+          "6": "Despite my noble birth, I do not place myself above other folk. We all have the same blood.",
+          "7": "My favor, once lost, is lost forever.",
+          "8": "If you do me an injury, I will crush you, ruin your name, and salt your fields."
+        }
+      }
+    ]
+  }
+  expect(dataParsers.characteristicFromBackground('Artist')).toEqual(expectedCharacteristic);
 });

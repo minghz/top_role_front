@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { backgroundParagraphs,
          featureFromBackground,
-         specialtyFromBackground } from '../services/dataParsers';
+         specialtyFromBackground,
+         characteristicFromBackground } from '../services/dataParsers';
 import '../css/CharContainer.css';
 
 class CharContainer extends Component {
@@ -41,17 +42,15 @@ class CharContainer extends Component {
     )
   }
 
-  specialtyView() {
-    let specialty = specialtyFromBackground(this.props.background)
-
-    if(Object.entries(specialty).length != 0) {
+  rollableObject(object, key) {
+    if(Object.entries(object).length != 0) {
       return (
-        <div>
-          <strong>{specialty.label}</strong>
-          <p>{specialty.description}</p>
-          <strong>Roll 1d{specialty.rollDice.faces}</strong>
+        <div key={key}>
+          <strong>{object.label}</strong>
+          <p>{object.description}</p>
+          <strong>Roll 1d{object.rollDice.faces}</strong>
           <ul>
-            { Object.entries(specialty.rolls).map((roll) => {
+            { Object.entries(object.rolls).map((roll) => {
               return(<li key={roll[0]}>{roll[0].concat(' | ', roll[1])}</li>)
             })}
           </ul>
@@ -62,16 +61,36 @@ class CharContainer extends Component {
     }
   }
 
+  specialtyView() {
+    let specialty = specialtyFromBackground(this.props.background)
+    return this.rollableObject(specialty, 1) // index will always be 1
+  }
+
+  characteristicView() {
+    let characteristic = characteristicFromBackground(this.props.background)
+    return(
+      <div>
+        <strong>Suggested Characteristics</strong>
+        <p>{characteristic.description}</p>
+        {characteristic.characteristics.map((object, index) => {
+          return this.rollableObject(object, index)
+        })}
+      </div>
+    )
+  }
+
   render() {
     const fluff = this.fluffView()
     const feature = this.featureView()
     const specialty = this.specialtyView()
+    const characteristic = this.characteristicView()
 
     return(
       <div className="char-container">
         { fluff }
         { feature }
         { specialty }
+        { characteristic }
       </div>
     )
   }
