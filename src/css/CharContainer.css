@@ -1,4 +1,7 @@
 .char-container {
   border: 1px solid black;
   grid-area: char;
+
+  height: 35em;
+  overflow: scroll;
 }
