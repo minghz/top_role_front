@@ -194,7 +194,7 @@ class Sheet extends Component {
          <ProficienciesContainer class={this.state.class} background={this.state.background}/>
          <AtacksContainer />
          <CharContainer background={this.state.background}/>
-         <ItemsContainer />
+         <ItemsContainer background={this.state.background} />
       </div>
     );
   }

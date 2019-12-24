@@ -109,7 +109,8 @@ jest.mock('../data/backgrounds-full.json', ()=>([
       "languages": ['2 of your choice'],
       "tools": ['keyboard', 'mouse']
     },
-    "specialty": {}
+    "specialty": {},
+    "equipment": "Keyboard, mouse, computer"
   },
   {
     "name": "Artist",
@@ -227,4 +228,8 @@ test('#characteristicFromBackground', () => {
     ]
   }
   expect(dataParsers.characteristicFromBackground('Artist')).toEqual(expectedCharacteristic);
+});
+
+test('#equipmentFromBackground', () => {
+  expect(dataParsers.equipmentFromBackground('Developer')).toBe("Keyboard, mouse, computer");
 });

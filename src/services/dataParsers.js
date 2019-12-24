@@ -87,3 +87,8 @@ export function characteristicFromBackground(backgroundName) {
   var background = BackgroundsData.find(({name}) => name === backgroundName)
   return background.suggested_characteristics
 }
+
+export function equipmentFromBackground(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  return background.equipment
+}
