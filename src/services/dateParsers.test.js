@@ -108,7 +108,8 @@ jest.mock('../data/backgrounds-full.json', ()=>([
       ],
       "languages": ['2 of your choice'],
       "tools": ['keyboard', 'mouse']
-    }
+    },
+    "specialty": {}
   },
   {
     "name": "Artist",
@@ -121,6 +122,19 @@ jest.mock('../data/backgrounds-full.json', ()=>([
       "description": [
         "You can channel artistic energy via angst"
       ]
+    },
+    "specialty": {
+      "label": "Bluff",
+      "description": "You must be able to sell your art",
+      "rollDice": {
+        "faces": "4"
+      },
+      "rolls": {
+        "1": "Bad liar",
+        "2": "Slippery tongue",
+        "3": "Grey tonge",
+        "4": "Don't brush teeth"
+      }
     }
   }
 ]));
@@ -146,4 +160,25 @@ test('#featureFromBackground', () => {
     description: ["You can channel artistic energy via angst"]
   }
   expect(dataParsers.featureFromBackground('Artist')).toEqual(expectedFeature);
+});
+
+test('#specialtyFromBackground', () => {
+  let expectedSpecialty = {
+    "label": "Bluff",
+    "description": "You must be able to sell your art",
+    "rollDice": {
+      "faces": "4"
+    },
+    "rolls": {
+      "1": "Bad liar",
+      "2": "Slippery tongue",
+      "3": "Grey tonge",
+      "4": "Don't brush teeth"
+    }
+  }
+  expect(dataParsers.specialtyFromBackground('Artist')).toEqual(expectedSpecialty);
+});
+
+test('#specialtyFromBackground empty', () => {
+  expect(dataParsers.specialtyFromBackground('Developer')).toEqual({});
 });

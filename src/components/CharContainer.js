@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { backgroundParagraphs, featureFromBackground } from '../services/dataParsers';
+import { backgroundParagraphs,
+         featureFromBackground,
+         specialtyFromBackground } from '../services/dataParsers';
 import '../css/CharContainer.css';
 
 class CharContainer extends Component {
@@ -39,14 +41,37 @@ class CharContainer extends Component {
     )
   }
 
+  specialtyView() {
+    let specialty = specialtyFromBackground(this.props.background)
+
+    if(Object.entries(specialty).length != 0) {
+      return (
+        <div>
+          <strong>{specialty.label}</strong>
+          <p>{specialty.description}</p>
+          <strong>Roll 1d{specialty.rollDice.faces}</strong>
+          <ul>
+            { Object.entries(specialty.rolls).map((roll) => {
+              return(<li key={roll[0]}>{roll[0].concat(' | ', roll[1])}</li>)
+            })}
+          </ul>
+        </div>
+      )
+    } else {
+      return <br/>
+    }
+  }
+
   render() {
     const fluff = this.fluffView()
     const feature = this.featureView()
+    const specialty = this.specialtyView()
 
     return(
       <div className="char-container">
         { fluff }
         { feature }
+        { specialty }
       </div>
     )
   }

@@ -77,3 +77,8 @@ export function featureFromBackground(backgroundName) {
   var background = BackgroundsData.find(({name}) => name === backgroundName)
   return background.feature
 }
+
+export function specialtyFromBackground(backgroundName) {
+  var background = BackgroundsData.find(({name}) => name === backgroundName)
+  return background.specialty
+}
