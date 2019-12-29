@@ -23,7 +23,6 @@ import ItemsContainer from './ItemsContainer';
 
 import RacesData from '../data/races.json';
 import ClassesData from '../data/classes.json';
-import BackgroundsInfoData from '../data/backgrounds-info.json';
 import BackgroundsData from '../data/backgrounds-full.json';
 
 class Sheet extends Component {

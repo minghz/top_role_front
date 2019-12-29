@@ -43,7 +43,7 @@ class CharContainer extends Component {
   }
 
   rollableObject(object, key) {
-    if(Object.entries(object).length != 0) {
+    if(Object.entries(object).length !== 0) {
       return (
         <div key={key}>
           <strong>{object.label}</strong>
