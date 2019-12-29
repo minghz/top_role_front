@@ -18,6 +18,11 @@ test('#proficiencyBonusFromLevel', () => {
   expect(helpers.proficiencyBonusFromLevel(17)).toBe(6);
 });
 
+test('#totalSkillBonus', () => {
+  expect(helpers.totalSkillBonus(true, 3, 4)).toBe(7);
+  expect(helpers.totalSkillBonus(false, 3, 4)).toBe(4);
+})
+
 test('#attributeOfSkill', () => {
   expect(helpers.attributeOfSkill('athletics')).toBe('str');
   expect(helpers.attributeOfSkill('acrobatics')).toBe('dex');

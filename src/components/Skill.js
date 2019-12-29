@@ -1,20 +1,6 @@
 import React, { Component } from 'react';
+import { totalSkillBonus } from '../services/helpers'
 import '../css/Skill.css'
-
-function totalSkillBonus(proficient, bonus, modifier) {
-  if(proficient){
-    return bonus + modifier;
-  } else {
-    return modifier;
-  }
-}
-
-function markProficiency(proficient) {
-  if(proficient)
-    return 'X';
-  else
-    return '';
-}
 
 class Skill extends Component {
   constructor(props) {
@@ -68,11 +54,11 @@ class Skill extends Component {
 
     if(checkboxIsLocked){
       checkbox = <div className="skill-proficiency locked-checkbox">
-        {markProficiency(this.state.proficient)}
+        {this.state.proficient ? 'X' : ''}
       </div>
     } else {
       checkbox = <div className="skill-proficiency" onClick={() => this.changeTotal()}>
-        {markProficiency(this.state.proficient)}
+        {this.state.proficient ? 'X' : ''}
       </div>
     }
 

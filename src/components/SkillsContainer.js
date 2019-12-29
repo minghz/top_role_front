@@ -18,7 +18,9 @@ class SkillsContainer extends Component {
   // TODO don't allow change if chosen reached max
   skillIsFromBackground(skill) {
     const background = this.props.background
-    const skillsFromBackground = skillProfsFromBackground(background)
+    const skillsFromBackground = skillProfsFromBackground(background).map((bgSkill) => {
+      return camelize(bgSkill)
+    })
 
     return skillsFromBackground.includes(skill)
   }

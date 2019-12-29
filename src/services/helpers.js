@@ -31,6 +31,10 @@ export function proficiencyBonusFromLevel(level) {
   }
 }
 
+export function totalSkillBonus(proficient, bonus, modifier) {
+  return proficient ? bonus + modifier : modifier
+}
+
 export function mapOfSkillAttribute() {
   return {
     athletics:      'str',
