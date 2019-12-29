@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { mapOfSkillAttribute } from '../services/helpers'
+import { refreshProfObj, mapOfSkillAttribute } from '../services/helpers'
 import { skillProfsFromBackground, skillChoicesFromClass } from '../services/dataParsers'
-import { humanizeCamelCase, camelize } from '../services/formatters'
 
 import Skill from './Skill';
 import '../css/SkillsContainer.css'
@@ -10,28 +9,33 @@ class SkillsContainer extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { chosen: 0 }
+    const backgroundSkills = skillProfsFromBackground(props.background)
+    this.state = {
+      chosen: 0,
+      proficiencies: refreshProfObj(backgroundSkills)
+    }
 
     this.handleSetProficient = this.handleSetProficient.bind(this);
   }
 
-  // TODO don't allow change if chosen reached max
-  skillIsFromBackground(skill) {
-    const background = this.props.background
-    const skillsFromBackground = skillProfsFromBackground(background).map((bgSkill) => {
-      return camelize(bgSkill)
-    })
+  componentDidUpdate(prevProps) {
+    if(this.props.background !== prevProps.background ||
+       this.props.class !== prevProps.class) {
 
-    return skillsFromBackground.includes(skill)
+      const backgroundSkills = skillProfsFromBackground(this.props.background)
+      this.setState({
+        chosen: 0,
+        proficiencies: refreshProfObj(backgroundSkills)
+      })
+    }
+  }
+  
+  skillIsFromBackground(skill) {
+    return skillProfsFromBackground(this.props.background).includes(skill)
   }
 
   skillIsChoosable(skill) {
-    let chooseChoices = skillChoicesFromClass(this.props.class).from
-    let camelizedChoiceList = chooseChoices.map((choice) => {
-      return camelize(choice)
-    });
-
-    return camelizedChoiceList.includes(skill)
+    return skillChoicesFromClass(this.props.class).from.includes(skill)
   }
 
   skillIsLocked(skill){
@@ -41,18 +45,20 @@ class SkillsContainer extends Component {
     return false
   }
 
-  skillIsProficient(skill){
-    if(this.skillIsFromBackground(skill)) return true
+  handleSetProficient(skill, toggle){
+    let chooseMax = skillChoicesFromClass(this.props.class).count
+    if(toggle && this.state.chosen >= chooseMax) return
 
-    return false
-  }
+    let newProficiencies = this.state.proficiencies
+    let newChosen = this.state.chosen
 
-  handleSetProficient(toggle){
-    if(toggle) {
-      this.setState({ chosen: this.state.chosen + 1 });
-    } else {
-      this.setState({ chosen: this.state.chosen - 1 });
-    }
+    newProficiencies[skill] = toggle
+    toggle ? ++newChosen : --newChosen
+
+    this.setState({
+      chosen: newChosen,
+      proficiencies: newProficiencies
+    })
   }
 
   render() {
@@ -67,11 +73,11 @@ class SkillsContainer extends Component {
             const attribute = entry[1]
 
             return(
-              <Skill key={skill} name={humanizeCamelCase(skill)}
+              <Skill key={skill} skill={skill}
                 modifier={this.props.modifiers[attribute]}
-                proficient={this.skillIsProficient(skill)}
-                locked={this.skillIsLocked(skill)}
                 bonus={this.props.bonus}
+                proficient={this.state.proficiencies[skill]}
+                locked={this.skillIsLocked(skill)}
                 onSetProficient={this.handleSetProficient}/>
             )
           })

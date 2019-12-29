@@ -3,6 +3,8 @@ import BackgroundsInfoData from '../data/backgrounds-info.json';
 import BackgroundsData from '../data/backgrounds-full.json';
 import ClassesData from '../data/classes.json';
 
+import { camelize } from './formatters'
+
 export function savingProficienciesFromClass(className) {
   var item = ClassesData.find(({name}) => name === className)
   var attr_keys = item.proficiencies.savingThrow // array with attribute keys
@@ -42,6 +44,10 @@ export function toolProficienciesFromClass(className) {
 export function skillChoicesFromClass(className) {
   var classObj = ClassesData.find(({name}) => name === className)
   var skillChoices = classObj.proficiencies.skills[0].choose
+  skillChoices.from = skillChoices.from.map((choice) => {
+    return camelize(choice)
+  });
+
   return skillChoices
 }
 
@@ -64,8 +70,12 @@ export function backgroundParagraphs(backgroundName) {
 }
 
 export function skillProfsFromBackground(backgroundName) {
-  var background = BackgroundsData.find(({name}) => name === backgroundName)
-  return background.proficiencies.skills
+  let background = BackgroundsData.find(({name}) => name === backgroundName)
+  let skills = background.proficiencies.skills
+  skills = skills.map((bgSkill) => {
+    return camelize(bgSkill)
+  })
+  return skills
 }
 
 export function languagesFromBackground(backgroundName) {

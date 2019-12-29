@@ -80,3 +80,32 @@ export function modifiers(base, racial) {
 export function listNames(array) {
   return Array.from(array, item => item["name"])
 }
+
+export function refreshProfObj(profs) {
+  let profObj = {
+    athletics:      false,
+    acrobatics:     false,
+    sleightOfHand:  false,
+    stealth:        false,
+    arcana:         false,
+    history:        false,
+    investigation:  false,
+    nature:         false,
+    religion:       false,
+    animalHandling: false,
+    insight:        false,
+    medicine:       false,
+    perception:     false,
+    survival:       false,
+    deception:      false,
+    intimidation:   false,
+    performance:    false,
+    persuasion:     false
+  }
+
+  profs.forEach(prof => {
+    profObj[prof] = true
+  })
+
+  return profObj
+}

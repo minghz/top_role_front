@@ -66,7 +66,7 @@ test('#toolProficienciesFromClass', () => {
 
 test('#skillChoicesFromClass', () => {
   let expectedChoiceObj = {
-    "from": ["animal handling", "athletics"],
+    "from": ["animalHandling", "athletics"],
     "count": 1
   }
   expect(dataParsers.skillChoicesFromClass('Barbarian')).toEqual(expectedChoiceObj);
@@ -119,7 +119,7 @@ jest.mock('../data/backgrounds-full.json', ()=>([
     "name": "Developer",
     "proficiencies": {
       "skills": [
-        'insight',
+        'animal handling',
         'religion'
       ],
       "languages": ['2 of your choice'],
@@ -178,7 +178,7 @@ jest.mock('../data/backgrounds-full.json', ()=>([
 ]));
 
 test('#skillProfsFromBackground', () => {
-  var expectedProfs = ['insight', 'religion']
+  var expectedProfs = ['animalHandling', 'religion']
   expect(dataParsers.skillProfsFromBackground('Developer')).toEqual(expectedProfs);
 });
 

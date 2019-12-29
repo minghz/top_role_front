@@ -180,7 +180,6 @@ class Sheet extends Component {
            bonus={this.state.proficiencyBonus}
            savingProficiencies={this.state.savingProficiencies} />
          <SkillsContainer
-           proficiencies={{}}
            background={this.state.background}
            class={this.state.class}
            bonus={this.state.proficiencyBonus}

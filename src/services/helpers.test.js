@@ -95,3 +95,27 @@ test('#listNames', () => {
   expect(helpers.listNames(fakeData)).toContain("Bob");
   expect(helpers.listNames(fakeData)).toContain("Marley");
 })
+
+test('#refreshProfObj', () => {
+  const expectedProfObj = {
+    athletics:      false,
+    acrobatics:     false,
+    sleightOfHand:  false,
+    stealth:        false,
+    arcana:         true,
+    history:        false,
+    investigation:  false,
+    nature:         false,
+    religion:       false,
+    animalHandling: true,
+    insight:        false,
+    medicine:       false,
+    perception:     false,
+    survival:       false,
+    deception:      false,
+    intimidation:   false,
+    performance:    false,
+    persuasion:     false
+  }
+  expect(helpers.refreshProfObj(['animalHandling', 'arcana'])).toEqual(expectedProfObj);
+})
