@@ -14,9 +14,11 @@ class LevelsContainer extends Component {
   }
 
   handleChange(event){
-    var newLevel = parseInt(event.target.value)
+    var newLevel = parseInt(event.target.value) || 0
 
-    if(newLevel < 1) { newLevel = 1}
+    if(newLevel < 1) { newLevel = 1 }
+
+		event.target.value = newLevel
 
     this.setState({
       value: newLevel,
