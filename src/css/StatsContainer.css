@@ -3,5 +3,5 @@
   grid-area: stats;
 
   display: grid;
-  grid-template-rows: auto;
+  grid-template-columns: 2fr 3fr;
 }

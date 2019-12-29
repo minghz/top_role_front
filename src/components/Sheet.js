@@ -56,7 +56,6 @@ class Sheet extends Component {
       level: level,
       hpCurrent: 6,
       hpMax: hpMax,
-      hpTmp: 1,
       proficiencyBonus: proficiencyBonus,
       savingProficiencies: savingProficiencies,
       attributes: attributesBase,
@@ -188,7 +187,6 @@ class Sheet extends Component {
            dexMod={this.state.attributeModifiers.dex}
            max={this.state.hpMax}
            current={this.state.hpCurrent}
-           tmp={this.state.hpTmp}
            onHpChange={this.handleHpChange}/>
          <ProficienciesContainer class={this.state.class} background={this.state.background}/>
          <AtacksContainer />
