@@ -15,7 +15,15 @@ jest.mock('../data/classes.json', ()=>([
       "savingThrow": ['str', 'dex', 'con'],
       "armor": ["light", "medium"],
       "weapons": ["simple", "martial"],
-      "tools": ['flute', 'Herbalism kit']
+      "tools": ['flute', 'Herbalism kit'],
+      "skills": [
+        {
+          "choose": {
+            "from": ["animal handling", "athletics"],
+            "count": 1
+          }
+        }
+      ]
     }
   },
   {
@@ -54,6 +62,14 @@ test('#weaponProficienciesFromClass', () => {
 test('#toolProficienciesFromClass', () => {
   expect(dataParsers.toolProficienciesFromClass('Barbarian')).toBe("flute, Herbalism kit");
   expect(dataParsers.toolProficienciesFromClass('Dummy')).toBe("none");
+});
+
+test('#skillChoicesFromClass', () => {
+  let expectedChoiceObj = {
+    "from": ["animal handling", "athletics"],
+    "count": 1
+  }
+  expect(dataParsers.skillChoicesFromClass('Barbarian')).toEqual(expectedChoiceObj);
 });
 
 jest.mock('../data/races.json', ()=>([

@@ -47,16 +47,19 @@ class Skill extends Component {
   }
 
   changeTotal(){
-    if(this.state.proficient)
+    if(this.state.proficient) {
       this.setState({
         proficient: false,
         total: totalSkillBonus(false, this.props.bonus, this.props.modifier)
       });
-    else
+      this.props.onSetProficient(false);
+    } else {
       this.setState({
         proficient: true,
         total: totalSkillBonus(true, this.props.bonus, this.props.modifier)
       });
+      this.props.onSetProficient(true);
+    }
   }
 
   render() {
@@ -65,12 +68,12 @@ class Skill extends Component {
 
     if(checkboxIsLocked){
       checkbox = <div className="skill-proficiency locked-checkbox">
-                   {markProficiency(this.state.proficient)}
-                 </div>
+        {markProficiency(this.state.proficient)}
+      </div>
     } else {
       checkbox = <div className="skill-proficiency" onClick={() => this.changeTotal()}>
-                   {markProficiency(this.state.proficient)}
-                 </div>
+        {markProficiency(this.state.proficient)}
+      </div>
     }
 
     return(

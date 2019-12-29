@@ -39,6 +39,12 @@ export function toolProficienciesFromClass(className) {
   return toolProf === undefined ? 'none' : toolProf.join(', ');
 }
 
+export function skillChoicesFromClass(className) {
+  var classObj = ClassesData.find(({name}) => name === className)
+  var skillChoices = classObj.proficiencies.skills[0].choose
+  return skillChoices
+}
+
 export function racialAttributes(raceName) {
   var obj = RacesData.find(({ name }) => name === raceName)
 

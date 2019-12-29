@@ -182,6 +182,7 @@ class Sheet extends Component {
          <SkillsContainer
            proficiencies={{}}
            background={this.state.background}
+           class={this.state.class}
            bonus={this.state.proficiencyBonus}
            modifiers={this.state.attributeModifiers}/>
          <StatsContainer
