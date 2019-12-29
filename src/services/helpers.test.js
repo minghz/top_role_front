@@ -18,6 +18,11 @@ test('#proficiencyBonusFromLevel', () => {
   expect(helpers.proficiencyBonusFromLevel(17)).toBe(6);
 });
 
+test('#totalSkillBonus', () => {
+  expect(helpers.totalSkillBonus(true, 3, 4)).toBe(7);
+  expect(helpers.totalSkillBonus(false, 3, 4)).toBe(4);
+})
+
 test('#attributeOfSkill', () => {
   expect(helpers.attributeOfSkill('athletics')).toBe('str');
   expect(helpers.attributeOfSkill('acrobatics')).toBe('dex');
@@ -89,4 +94,28 @@ test('#listNames', () => {
   expect(helpers.listNames(fakeData).length).toBe(2);
   expect(helpers.listNames(fakeData)).toContain("Bob");
   expect(helpers.listNames(fakeData)).toContain("Marley");
+})
+
+test('#refreshProfObj', () => {
+  const expectedProfObj = {
+    athletics:      false,
+    acrobatics:     false,
+    sleightOfHand:  false,
+    stealth:        false,
+    arcana:         true,
+    history:        false,
+    investigation:  false,
+    nature:         false,
+    religion:       false,
+    animalHandling: true,
+    insight:        false,
+    medicine:       false,
+    perception:     false,
+    survival:       false,
+    deception:      false,
+    intimidation:   false,
+    performance:    false,
+    persuasion:     false
+  }
+  expect(helpers.refreshProfObj(['animalHandling', 'arcana'])).toEqual(expectedProfObj);
 })
