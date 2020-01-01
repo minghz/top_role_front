@@ -21,8 +21,6 @@ import CharContainer from './CharContainer';
 import AtacksContainer from './AtacksContainer';
 import ItemsContainer from './ItemsContainer';
 
-import RacesData from '../data/races.json';
-import ClassesData from '../data/classes.json';
 import BackgroundsData from '../data/backgrounds-full.json';
 
 class Sheet extends Component {
@@ -153,11 +151,9 @@ class Sheet extends Component {
             onNameChange={this.handleNameChange} />
           <CharClass
             value={this.state.class}
-            classes={helpers.listNames(ClassesData)}
             onClassChange={this.handleClassChange}/>
           <CharRace
             value={this.state.race}
-            races={helpers.listNames(RacesData)}
             onRaceChange={this.handleRaceChange} />
           <CharBackground
             value={this.state.background}

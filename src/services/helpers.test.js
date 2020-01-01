@@ -119,3 +119,12 @@ test('#refreshProfObj', () => {
   }
   expect(helpers.refreshProfObj(['animalHandling', 'arcana'])).toEqual(expectedProfObj);
 })
+
+test('#makeSelectable', () => {
+  const expected = [
+    { value: 'item1', label: 'item1' },
+    { value: 'item2', label: 'item2' },
+    { value: 'item3', label: 'item3' }
+  ]
+  expect(helpers.makeSelectable(['item1', 'item2', 'item3'])).toEqual(expected)
+})

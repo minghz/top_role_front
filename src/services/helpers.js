@@ -109,3 +109,9 @@ export function refreshProfObj(profs) {
 
   return profObj
 }
+
+export function makeSelectable(items) {
+  return items.map(item => {
+    return { value: item, label: item }
+  })
+}
