@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
+import Select from 'react-select'
+import { listNames } from '../../services/helpers.js'
+import BackgroundsData from '../../data/backgrounds-full.json'
+
+function selectableBackgrounds() {
+  let backgrounds = listNames(BackgroundsData)
+  let selectable = backgrounds.map(background => {
+    return { value: background, label: background }
+  })
+  return selectable
+}
 
 class CharBackground extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value,
-      backgrounds: props.backgrounds
+      value: { value: props.value, label: props.value }
     }
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.currentTarget.value});
-    this.props.onBackgroundChange(event.currentTarget.value);
+  handleChange(selectedObj) {
+    this.setState({value: selectedObj});
+    this.props.onBackgroundChange(selectedObj.value);
   }
 
   render(){
     return(
       <div className="char-background">
         <strong>Background</strong>
-        <select value={this.state.value} onChange={this.handleChange} >
-          { this.state.backgrounds.map((value, index) => {
-            return <option key={index} value={value}>{value}</option>
-          })}
-        </select>
+        <Select
+          value={this.state.value}
+          options={selectableBackgrounds()}
+          onChange={this.handleChange} />
       </div>
     );
   }

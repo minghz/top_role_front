@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
+import Select from 'react-select'
+import { listNames } from '../../services/helpers.js'
+import ClassesData from '../../data/classes.json'
+
+function selectableClasses() {
+  let classes = listNames(ClassesData)
+  let selectable = classes.map(charClass => {
+    return { value: charClass, label: charClass }
+  })
+  return selectable
+}
 
 class CharClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value,
-      classes: props.classes
+      value: { value: props.value, label: props.value }
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-    this.props.onClassChange(event.target.value);
+  handleChange(selectedObj) {
+    this.setState({value: selectedObj});
+    this.props.onClassChange(selectedObj.value);
   }
 
   render(){
     return(
       <div className="char-class">
         <strong>Class</strong>
-        <select value={this.state.value} onChange={this.handleChange} >
-          { this.state.classes.map((value, index) => {
-              return <option key={index} value={value}>{value}</option>
-          })}
-        </select>
+        <Select
+          value={this.state.value}
+          options={selectableClasses()}
+          onChange={this.handleChange} />
       </div>
     );
   }
