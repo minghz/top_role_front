@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select'
-import { listNames } from '../../services/helpers.js'
+import { listNames, makeSelectable } from '../../services/helpers.js'
 import ClassesData from '../../data/classes.json'
-
-function selectableClasses() {
-  let classes = listNames(ClassesData)
-  let selectable = classes.map(charClass => {
-    return { value: charClass, label: charClass }
-  })
-  return selectable
-}
 
 class CharClass extends Component {
   constructor(props) {
@@ -32,7 +24,7 @@ class CharClass extends Component {
         <strong>Class</strong>
         <Select
           value={this.state.value}
-          options={selectableClasses()}
+          options={makeSelectable(listNames(ClassesData))}
           onChange={this.handleChange} />
       </div>
     );

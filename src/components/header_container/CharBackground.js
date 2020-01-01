@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select'
-import { listNames } from '../../services/helpers.js'
+import { listNames, makeSelectable } from '../../services/helpers.js'
 import BackgroundsData from '../../data/backgrounds-full.json'
-
-function selectableBackgrounds() {
-  let backgrounds = listNames(BackgroundsData)
-  let selectable = backgrounds.map(background => {
-    return { value: background, label: background }
-  })
-  return selectable
-}
 
 class CharBackground extends Component {
   constructor(props) {
@@ -32,7 +24,7 @@ class CharBackground extends Component {
         <strong>Background</strong>
         <Select
           value={this.state.value}
-          options={selectableBackgrounds()}
+          options={makeSelectable(listNames(BackgroundsData))}
           onChange={this.handleChange} />
       </div>
     );
