@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/top_role_front/static/css/main.9fd560dd.chunk.css",
+    "main.js": "/top_role_front/static/js/main.6d114583.chunk.js",
+    "main.js.map": "/top_role_front/static/js/main.6d114583.chunk.js.map",
+    "runtime-main.js": "/top_role_front/static/js/runtime-main.b13f4fff.js",
+    "runtime-main.js.map": "/top_role_front/static/js/runtime-main.b13f4fff.js.map",
+    "static/js/2.d2350d2d.chunk.js": "/top_role_front/static/js/2.d2350d2d.chunk.js",
+    "static/js/2.d2350d2d.chunk.js.map": "/top_role_front/static/js/2.d2350d2d.chunk.js.map",
+    "index.html": "/top_role_front/index.html",
+    "precache-manifest.8a61b79a73057f439440f7f42bdc2ca0.js": "/top_role_front/precache-manifest.8a61b79a73057f439440f7f42bdc2ca0.js",
+    "service-worker.js": "/top_role_front/service-worker.js",
+    "static/css/main.9fd560dd.chunk.css.map": "/top_role_front/static/css/main.9fd560dd.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b13f4fff.js",
+    "static/js/2.d2350d2d.chunk.js",
+    "static/css/main.9fd560dd.chunk.css",
+    "static/js/main.6d114583.chunk.js"
+  ]
+}
